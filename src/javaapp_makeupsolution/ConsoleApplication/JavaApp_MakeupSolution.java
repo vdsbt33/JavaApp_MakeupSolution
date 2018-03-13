@@ -124,8 +124,20 @@ public class JavaApp_MakeupSolution {
         
         if (clientes.size() > 0){
             for (int i = 0; i < clientes.size(); i++){
-                ct.print(String.valueOf(clientes.get(i).getCod()) + ". " + clientes.get(i).getNome() + " - " + clientes.get(i).getDescricao());
-                ClienteDAO.getEnderecoCliente(clientes.get(i));
+                
+                if (clientes.get(i).getDescricao().isEmpty()){
+                    ct.print(String.valueOf(clientes.get(i).getCod()) + ". " + clientes.get(i).getNome() + " - " + "[SEM DESCRIÇÃO]" + " @ ");
+                } else {
+                    ct.print(String.valueOf(clientes.get(i).getCod()) + ". " + clientes.get(i).getNome() + " - " + clientes.get(i).getDescricao() + " @ ");
+                }
+                List<Endereco> enderecos = ClienteDAO.getEnderecoCliente(clientes.get(i));
+                for (int j = 0; j < enderecos.size(); j++){
+                    if (j == enderecos.size() - 1 && enderecos.get(j).getRuaEndereco() != null){
+                        ct.println(enderecos.get(j).getCidadeEndereco().getNomeCidadeEndereco() + ", " + enderecos.get(j).getBairroEndereco().getNomeBairroEndereco() + ", " + enderecos.get(j).getRuaEndereco().getNomeRuaEndereco() + ", " + enderecos.get(j).getNumeroEndereco());
+                    } else {
+                        ct.println("[NENHUM ENDEREÇO CADASTRADO]");
+                    }
+                }
             }
         } else {
             ct.println("Não há clientes cadastrados.");
@@ -134,10 +146,61 @@ public class JavaApp_MakeupSolution {
     }
     
     public static void clientes_editar(){
-        ct.br(11);
-        ct.showTitleMessage();
-        ct.showSubtitleMessage("Clientes - Editar");
-        ct.pause();
+        
+        String op1 = "";
+        
+        while (!op1.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Clientes - Editar");
+            op1 = ct.printr("Insira o ID do cliente ou voltar: ").toLowerCase();
+            int id = 0;
+
+            if (!op1.equals("voltar")){
+                id = Integer.valueOf(op1);
+                if (ClienteDAO.exists(id)){
+                    Cliente cliente = ClienteDAO.getClienteByID(id);
+                    List<Endereco> enderecos = ClienteDAO.getEnderecoCliente(cliente);
+
+                    String op2 = "";
+                    while (!op2.equals("voltar")){
+                        ct.println("\nid. Nome - Descrição @ Cidade, Bairro, Rua, Numero");
+
+                        if (cliente.getDescricao().isEmpty()){
+                            ct.print(String.valueOf(cliente.getCod()) + ". " + cliente.getNome() + " - " + "[SEM DESCRIÇÃO]" + " @ ");
+                        } else {
+                            ct.print(String.valueOf(cliente.getCod()) + ". " + cliente.getNome() + " - " + cliente.getDescricao() + " @ ");
+                        }
+
+                        for (int j = 0; j < enderecos.size(); j++){
+                            if (j == enderecos.size() - 1 && enderecos.get(j).getRuaEndereco() != null){
+                                ct.println("[" + enderecos.get(j).getCidadeEndereco().getNomeCidadeEndereco() + ", " + enderecos.get(j).getBairroEndereco().getNomeBairroEndereco() + ", " + enderecos.get(j).getRuaEndereco().getNomeRuaEndereco() + ", " + enderecos.get(j).getNumeroEndereco() + "]");
+                            } else {
+                                ct.println("[NENHUM ENDEREÇO CADASTRADO]");
+                            }
+                        }
+                        ct.print("\nEscolha o que deseja editar:");
+
+                        if (enderecos.get(0).getRuaEndereco() == null){
+                            op2 = ct.printrln("\n[nome] [descricao] [endereco] [voltar]").toLowerCase();
+                        } else {
+                            op2 = ct.printrln("\n[nome] [descricao] [cidade] [bairro] [rua] [numero] [voltar]").toLowerCase();
+                        }
+
+                        if (!op2.equals("voltar")){
+
+
+                            op2 = "";
+                        }
+                    }
+                } else {
+                    ct.println("\nNão há clientes com o id inserido.");
+                    ct.pause();
+                }
+            }
+            
+        }
+        
     }
     
     public static void clientes_remover(){

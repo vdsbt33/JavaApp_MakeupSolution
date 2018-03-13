@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javaapp_makeupsolution.ConsoleApplication.Model.BairroEndereco;
 
 /**
  *
@@ -50,5 +51,44 @@ public class BairroEnderecoDAO {
         }    
     }
     
+    public static BairroEndereco getBairroEnderecoByID(int id){
+        
+        BairroEndereco bairroEndereco = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT codBairroEndereco, codCidadeEndereco, nomeBairroEndereco\n" +
+                        "FROM BairroEndereco\n" +
+                        "WHERE codBairroEndereco = ?;";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, id);
+            rset = pstm.executeQuery();
+            while (rset.next()){
+                
+                bairroEndereco = new BairroEndereco(rset.getInt("codBairroEndereco"), CidadeEnderecoDAO.getCidadeEnderecoByID(rset.getInt("codCidadeEndereco")), rset.getString("nomeBairroEndereco"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return bairroEndereco;
+    }
     
 }

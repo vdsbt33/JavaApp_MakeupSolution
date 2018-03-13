@@ -6,6 +6,10 @@
 package javaapp_makeupsolution.ConsoleApplication.Controller;
 
 import javaapp_makeupsolution.ConsoleApplication.Model.Cliente;
+import javaapp_makeupsolution.ConsoleApplication.Model.Endereco;
+import javaapp_makeupsolution.ConsoleApplication.Model.CidadeEndereco;
+import javaapp_makeupsolution.ConsoleApplication.Model.BairroEndereco;
+import javaapp_makeupsolution.ConsoleApplication.Model.RuaEndereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -92,27 +96,25 @@ public class ClienteDAO {
         return clientes;
     }
     
-    public static void getEnderecoCliente(Cliente cliente){
-                
+    public static Boolean exists(int id){
+        Boolean exists = false;
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
-        String query = "SELECT cid.nomeCidadeEndereco, bar.nomeBairroEndereco, rua.nomeRuaEndereco, ende.numeroEndereco " +
-                        "FROM Cliente cli " +
-                        "LEFT JOIN Endereco ende ON ende.codCliente = cli.codCliente " +
-                        "LEFT JOIN CidadeEndereco cid ON cid.codCidadeEndereco = ende.codCidadeEndereco " +
-                        "LEFT JOIN BairroEndereco bar ON bar.codBairroEndereco = cid.codCidadeEndereco " +
-                        "LEFT JOIN RuaEndereco rua ON rua.codRuaEndereco = bar.codBairroEndereco " +
-                        "WHERE cli.codCliente = ?;";
+        String query =  "SELECT codCliente\n" +
+                        "FROM Cliente\n"+
+                        "WHERE codCliente = ?";
         
         try {
             conn = ConnectionFactory.createConnectionToMySQL();
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, cliente.getCod());
+            pstm.setInt(1, id);
             rset = pstm.executeQuery();
             
             while (rset.next()){
-                System.out.println(" @ " + rset.getString("cid.nomeCidadeEndereco") + ", " + rset.getString("bar.nomeBairroEndereco") + ", " + rset.getString("rua.nomeRuaEndereco") + ", " + rset.getInt("ende.numeroEndereco"));
+                if (rset.getInt("codCliente") == id){
+                    exists = true;
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -131,6 +133,101 @@ public class ClienteDAO {
                 ex.printStackTrace();
             }   
         }
+        
+        return exists;
+    }
+    
+    public static Cliente getClienteByID(int id){
+        Cliente cliente = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT codCliente, nomeCliente, descricaoCliente\n" +
+                        "FROM Cliente\n"+
+                        "WHERE codCliente = ?";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, id);
+            rset = pstm.executeQuery();
+            
+            while (rset.next()){
+                cliente = new Cliente(rset.getInt("codCliente"), rset.getString("nomeCliente"), rset.getString("descricaoCliente"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return cliente;
+    }
+    
+    public static List<Endereco> getEnderecoCliente(Cliente cliente){
+        List<Endereco> enderecos = new ArrayList<Endereco>();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT cid.codCidadeEndereco, cid.nomeCidadeEndereco, bar.codBairroEndereco, bar.nomeBairroEndereco, rua.codRuaEndereco, rua.nomeRuaEndereco, ende.numeroEndereco\n" +
+                        "FROM Cliente cli\n" +
+                        "LEFT JOIN Endereco ende ON ende.codCliente = cli.codCliente\n" +
+                        "LEFT JOIN CidadeEndereco cid ON cid.codCidadeEndereco = ende.codCidadeEndereco\n" +
+                        "LEFT JOIN BairroEndereco bar ON bar.codBairroEndereco = cid.codCidadeEndereco\n" +
+                        "LEFT JOIN RuaEndereco rua ON rua.codRuaEndereco = bar.codBairroEndereco\n" +
+                        "WHERE cli.codCliente = ?;";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, cliente.getCod());
+            rset = pstm.executeQuery();
+            CidadeEndereco cidadeEndereco = null;
+            BairroEndereco bairroEndereco = null;
+            RuaEndereco ruaEndereco = null;
+            int count = 0;
+            while (rset.next()){
+                if (rset.getRow() == 0 && count == 0){
+                    return null;
+                }
+                cidadeEndereco = CidadeEnderecoDAO.getCidadeEnderecoByID(rset.getInt("codCidadeEndereco"));
+                bairroEndereco = BairroEnderecoDAO.getBairroEnderecoByID(rset.getInt("codBairroEndereco"));
+                ruaEndereco = RuaEnderecoDAO.getRuaEnderecoByID(rset.getInt("codRuaEndereco"));
+                
+                enderecos.add(new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, rset.getInt("ende.numeroEndereco")));
+                count++;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return enderecos;
         
     }
     

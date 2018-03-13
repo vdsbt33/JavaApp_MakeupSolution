@@ -11,6 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javaapp_makeupsolution.ConsoleApplication.Model.BairroEndereco;
+import javaapp_makeupsolution.ConsoleApplication.Model.Endereco;
+import javaapp_makeupsolution.ConsoleApplication.Model.RuaEndereco;
 
 /**
  *
@@ -46,9 +49,46 @@ public class CidadeEnderecoDAO {
             }
             cidadeEndereco.setCodCidadeEndereco(lastid);
             return lastid;
-        }
-        
+        }   
     }
     
-    
+    public static CidadeEndereco getCidadeEnderecoByID(int id){
+        
+        CidadeEndereco cidadeEndereco = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT codCidadeEndereco, nomeCidadeEndereco\n" +
+                        "FROM CidadeEndereco\n" +
+                        "WHERE codCidadeEndereco = ?;";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, id);
+            rset = pstm.executeQuery();
+            while (rset.next()){
+                
+                cidadeEndereco = new CidadeEndereco(rset.getInt("codCidadeEndereco"), rset.getString("nomeCidadeEndereco"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return cidadeEndereco;
+    }
 }

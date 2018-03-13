@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javaapp_makeupsolution.ConsoleApplication.Model.RuaEndereco;
 
 /**
  *
@@ -48,7 +49,45 @@ public class RuaEnderecoDAO {
             ruaEndereco.setCodRuaEndereco(lastid);
             return lastid;
         }
+    }
+    
+    public static RuaEndereco getRuaEnderecoByID(int id){
         
+        RuaEndereco ruaEndereco = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT codRuaEndereco, codBairroEndereco, nomeRuaEndereco\n" +
+                        "FROM RuaEndereco\n" +
+                        "WHERE codRuaEndereco = ?;";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, id);
+            rset = pstm.executeQuery();
+            while (rset.next()){
+                ruaEndereco = new RuaEndereco(rset.getInt("codRuaEndereco"), BairroEnderecoDAO.getBairroEnderecoByID(rset.getInt("codBairroEndereco")), rset.getString("nomeRuaEndereco"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return ruaEndereco;
     }
     
 }

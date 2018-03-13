@@ -43,7 +43,7 @@ CREATE TABLE Contato (
 );
 
 CREATE TABLE Endereco (
-  codCliente INT NOT NULL,
+  codCliente INT NOT NULL UNIQUE,
   codCidadeEndereco INT NOT NULL,
   codBairroEndereco INT NOT NULL,
   codRuaEndereco INT NOT NULL,
