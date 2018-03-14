@@ -3,20 +3,20 @@ Made to store customers' and providers' data
 
 If you want to try it out, don't forget to create the database using the [.sql file](/sql/sqlSchema_MakeupSolution.sql).
 
-##Objectives
-####Customer
+## Objectives
+#### Customer
 - [x] Create
 - [x] Read
 - [x] Update
 - [x] Delete
 
-####CustomerOrder
+#### CustomerOrder
 - [ ] Create
 - [ ] Read
 - [ ] Update
 - [ ] Delete
 
-####Product
+#### Product
 - [ ] Create
 - [ ] Read
 - [ ] Update
