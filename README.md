@@ -1,5 +1,5 @@
 # JavaApp_MakeupSolution
-<div id="this_is_a_test" style="background-color: black; foreground; white;">
+<div id="this_is_a_test" style="background-color: black; foreground: white;">
 Made to store customers' and providers' data. <br>
 Learning Java while helping my sister out.
 </div>
