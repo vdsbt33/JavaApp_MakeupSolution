@@ -111,7 +111,6 @@ public class JavaApp_MakeupSolution {
             }
         }
         
-        op = "";
     }
     
     public static void clientes_listar(){
@@ -130,13 +129,11 @@ public class JavaApp_MakeupSolution {
                 } else {
                     ct.print(String.valueOf(clientes.get(i).getCod()) + ". " + clientes.get(i).getNome() + " - " + clientes.get(i).getDescricao() + " @ ");
                 }
-                List<Endereco> enderecos = ClienteDAO.getEnderecoCliente(clientes.get(i));
-                for (int j = 0; j < enderecos.size(); j++){
-                    if (j == enderecos.size() - 1 && enderecos.get(j).getRuaEndereco() != null){
-                        ct.println(enderecos.get(j).getCidadeEndereco().getNomeCidadeEndereco() + ", " + enderecos.get(j).getBairroEndereco().getNomeBairroEndereco() + ", " + enderecos.get(j).getRuaEndereco().getNomeRuaEndereco() + ", " + enderecos.get(j).getNumeroEndereco());
-                    } else {
-                        ct.println("[NENHUM ENDEREÇO CADASTRADO]");
-                    }
+                Endereco endereco = ClienteDAO.getEnderecoCliente(clientes.get(i));
+                if (endereco.getRuaEndereco() != null){
+                    ct.println(endereco.getCidadeEndereco().getNomeCidadeEndereco() + ", " + endereco.getBairroEndereco().getNomeBairroEndereco() + ", " + endereco.getRuaEndereco().getNomeRuaEndereco() + ", " + endereco.getNumeroEndereco());
+                } else {
+                    ct.println("[NENHUM ENDEREÇO CADASTRADO]");
                 }
             }
         } else {
@@ -145,7 +142,7 @@ public class JavaApp_MakeupSolution {
         ct.pause();
     }
     
-    public static void clientes_editar(){
+    public static void clientes_editar() throws Exception{
         
         String op1 = "";
         
@@ -154,16 +151,19 @@ public class JavaApp_MakeupSolution {
             ct.showTitleMessage();
             ct.showSubtitleMessage("Clientes - Editar");
             op1 = ct.printr("Insira o ID do cliente ou voltar: ").toLowerCase();
+            
             int id = 0;
-
-            if (!op1.equals("voltar")){
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
                 id = Integer.valueOf(op1);
                 if (ClienteDAO.exists(id)){
                     Cliente cliente = ClienteDAO.getClienteByID(id);
-                    List<Endereco> enderecos = ClienteDAO.getEnderecoCliente(cliente);
+                    Endereco endereco = ClienteDAO.getEnderecoCliente(cliente);
+                    ct.println("\n" + endereco.getRuaEndereco().getNomeRuaEndereco() + "\n");
 
                     String op2 = "";
                     while (!op2.equals("voltar")){
+                        ct.br(11);
                         ct.println("\nid. Nome - Descrição @ Cidade, Bairro, Rua, Numero");
 
                         if (cliente.getDescricao().isEmpty()){
@@ -172,26 +172,64 @@ public class JavaApp_MakeupSolution {
                             ct.print(String.valueOf(cliente.getCod()) + ". " + cliente.getNome() + " - " + cliente.getDescricao() + " @ ");
                         }
 
-                        for (int j = 0; j < enderecos.size(); j++){
-                            if (j == enderecos.size() - 1 && enderecos.get(j).getRuaEndereco() != null){
-                                ct.println("[" + enderecos.get(j).getCidadeEndereco().getNomeCidadeEndereco() + ", " + enderecos.get(j).getBairroEndereco().getNomeBairroEndereco() + ", " + enderecos.get(j).getRuaEndereco().getNomeRuaEndereco() + ", " + enderecos.get(j).getNumeroEndereco() + "]");
-                            } else {
-                                ct.println("[NENHUM ENDEREÇO CADASTRADO]");
-                            }
+                        if (endereco != null && endereco.getRuaEndereco() != null){
+                            ct.println("[" + endereco.getCidadeEndereco().getNomeCidadeEndereco() + ", " + endereco.getBairroEndereco().getNomeBairroEndereco() + ", " + endereco.getRuaEndereco().getNomeRuaEndereco() + ", " + endereco.getNumeroEndereco() + "]");
+                        } else {
+                            ct.println("[NENHUM ENDEREÇO CADASTRADO]");
                         }
+                        
                         ct.print("\nEscolha o que deseja editar:");
 
-                        if (enderecos.get(0).getRuaEndereco() == null){
+                        if (endereco != null && endereco.getRuaEndereco() == null){
                             op2 = ct.printrln("\n[nome] [descricao] [endereco] [voltar]").toLowerCase();
                         } else {
                             op2 = ct.printrln("\n[nome] [descricao] [cidade] [bairro] [rua] [numero] [voltar]").toLowerCase();
                         }
 
                         if (!op2.equals("voltar")){
+                            
+                            if (op2.equals("nome")){
+                                cliente.setNome(ct.printr("Nome anterior: " + cliente.getNome() + ". Nome novo: "));
+                                ClienteDAO.Atualizar(cliente);
+                            } else if (op2.equals("descricao")){
+                                if (cliente.getDescricao().isEmpty()){
+                                    cliente.setDescricao(ct.printr("Não possuia descrição. Descricao nova: "));
+                                } else {
+                                    cliente.setDescricao(ct.printr("Descricao anterior: " + cliente.getDescricao() + ". Descricao nova: "));
+                                }
+                                ClienteDAO.Atualizar(cliente);
+                            } else if (op2.equals("endereco") && endereco.getRuaEndereco() == null){
+                                CidadeEndereco cidadeEndereco = new CidadeEndereco(ct.printr("Cidade: "));
+                                BairroEndereco bairroEndereco = new BairroEndereco(cidadeEndereco, ct.printr("Bairro: "));
+                                RuaEndereco ruaEndereco = new RuaEndereco(bairroEndereco, ct.printr("Rua: "));
+                                Endereco novoEndereco = new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, Integer.valueOf(ct.printr("Numero: ")));
 
+                                ct.br(3);
+                                CidadeEnderecoDAO.Adicionar(cidadeEndereco);
+                                BairroEnderecoDAO.Adicionar(bairroEndereco);
+                                RuaEnderecoDAO.Adicionar(ruaEndereco);
+                                EnderecoDAO.Adicionar(novoEndereco);
 
+                                ct.pause();
+                            } else if (endereco.getRuaEndereco() != null){
+                                if (op2.equals("cidade")){
+                                    endereco.getCidadeEndereco().setNomeCidadeEndereco(ct.printr("Cidade anterior: " + endereco.getCidadeEndereco().getNomeCidadeEndereco() + ". Cidade nova: "));
+                                    CidadeEnderecoDAO.Atualizar(endereco.getCidadeEndereco());
+                                } else if (op2.equals("bairro")){
+                                    endereco.getBairroEndereco().setNomeBairroEndereco(ct.printr("Bairro anterior: " + endereco.getBairroEndereco().getNomeBairroEndereco() + ". Bairro novo: "));
+                                    BairroEnderecoDAO.Atualizar(endereco.getBairroEndereco());
+                                } else if (op2.equals("rua")) {
+                                    endereco.getRuaEndereco().setNomeRuaEndereco(ct.printr("Rua anterior: " + endereco.getRuaEndereco().getNomeRuaEndereco() + ". Rua novo: "));
+                                    RuaEnderecoDAO.Atualizar(endereco.getRuaEndereco());
+                                } else if (op2.equals("numero")){
+                                    endereco.setNumeroEndereco(Integer.valueOf(ct.printr("Numero anterior: " + String.valueOf(endereco.getNumeroEndereco()) + ". Numero novo: ")));
+                                    EnderecoDAO.Atualizar(endereco);
+                                }
+                            }
                             op2 = "";
                         }
+                        
+                        ct.pause();
                     }
                 } else {
                     ct.println("\nNão há clientes com o id inserido.");

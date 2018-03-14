@@ -53,6 +53,35 @@ public class EnderecoDAO {
         }
     }
     
+    public static void Atualizar(Endereco endereco){
+        String query =  "UPDATE Endereco\n" +
+                        "SET numeroEndereco = ?\n" +
+                        "WHERE codCliente = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, endereco.getNumeroEndereco());
+            pstm.setInt(2, endereco.getCliente().getCod());
+            pstm.execute();
+            System.out.println("Número atualizado.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao atualizar Número:");
+                ex.printStackTrace();
+            }
+        }
+    }
     
     
 }

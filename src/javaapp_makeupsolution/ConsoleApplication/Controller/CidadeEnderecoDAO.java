@@ -52,6 +52,38 @@ public class CidadeEnderecoDAO {
         }   
     }
     
+    public static void Atualizar(CidadeEndereco cidadeEndereco){
+        String query =  "UPDATE CidadeEndereco\n" +
+                        "SET nomeCidadeEndereco = ?\n" +
+                        "WHERE codCidadeEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, cidadeEndereco.getNomeCidadeEndereco());
+            pstm.setInt(2, cidadeEndereco.getCodCidadeEndereco());
+            pstm.execute();
+            System.out.println("Cidade atualizada.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao atualizar Cidade:");
+                ex.printStackTrace();
+            }
+            
+        }
+    }
+    
     public static CidadeEndereco getCidadeEnderecoByID(int id){
         
         CidadeEndereco cidadeEndereco = null;

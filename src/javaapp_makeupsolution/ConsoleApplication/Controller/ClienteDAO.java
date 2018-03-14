@@ -96,6 +96,38 @@ public class ClienteDAO {
         return clientes;
     }
     
+    public static void Atualizar(Cliente cliente) {
+        String query =  "UPDATE Cliente\n" +
+                        "SET nomeCliente = ?, descricaoCliente = ?\n" +
+                        "WHERE codCliente = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, cliente.getNome());
+            pstm.setString(2, cliente.getDescricao());
+            pstm.setInt(3, cliente.getCod());
+            pstm.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+                System.out.println("Cliente atualizado.");
+                
+            } catch (Exception ex) {
+                System.out.println("Erro ao atualizar Cliente:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static Boolean exists(int id){
         Boolean exists = false;
         Connection conn = null;
@@ -176,8 +208,8 @@ public class ClienteDAO {
         return cliente;
     }
     
-    public static List<Endereco> getEnderecoCliente(Cliente cliente){
-        List<Endereco> enderecos = new ArrayList<Endereco>();
+    public static Endereco getEnderecoCliente(Cliente cliente){
+        Endereco endereco = null;
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
@@ -206,7 +238,7 @@ public class ClienteDAO {
                 bairroEndereco = BairroEnderecoDAO.getBairroEnderecoByID(rset.getInt("codBairroEndereco"));
                 ruaEndereco = RuaEnderecoDAO.getRuaEnderecoByID(rset.getInt("codRuaEndereco"));
                 
-                enderecos.add(new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, rset.getInt("ende.numeroEndereco")));
+                endereco = new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, rset.getInt("ende.numeroEndereco"));
                 count++;
             }
         } catch (Exception ex) {
@@ -227,7 +259,7 @@ public class ClienteDAO {
             }   
         }
         
-        return enderecos;
+        return endereco;
         
     }
     

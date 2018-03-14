@@ -51,6 +51,36 @@ public class BairroEnderecoDAO {
         }    
     }
     
+    public static void Atualizar(BairroEndereco bairroEndereco){
+        String query =  "UPDATE BairroEndereco\n" +
+                        "SET nomeBairroEndereco = ?\n" +
+                        "WHERE codBairroEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, bairroEndereco.getNomeBairroEndereco());
+            pstm.setInt(2, bairroEndereco.getCodBairroEndereco());
+            pstm.execute();
+            System.out.println("Bairro atualizado.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao atualizar Bairro:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static BairroEndereco getBairroEnderecoByID(int id){
         
         BairroEndereco bairroEndereco = null;

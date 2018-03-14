@@ -51,6 +51,36 @@ public class RuaEnderecoDAO {
         }
     }
     
+    public static void Atualizar(RuaEndereco ruaEndereco){
+        String query =  "UPDATE RuaEndereco\n" +
+                        "SET nomeRuaEndereco = ?\n" +
+                        "WHERE codRuaEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, ruaEndereco.getNomeRuaEndereco());
+            pstm.setInt(2, ruaEndereco.getCodRuaEndereco());
+            pstm.execute();
+            System.out.println("Rua atualizada.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao atualizar Rua:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static RuaEndereco getRuaEnderecoByID(int id){
         
         RuaEndereco ruaEndereco = null;
