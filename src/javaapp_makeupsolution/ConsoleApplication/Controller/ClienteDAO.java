@@ -128,6 +128,37 @@ public class ClienteDAO {
         }
     }
     
+    public static void Remover(Cliente cliente){
+        String query =  "DELETE FROM Cliente\n" +
+                        "WHERE codCliente = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        if (ClienteDAO.hasEndereco(cliente)){
+            EnderecoDAO.Remover(ClienteDAO.getEnderecoCliente(cliente));
+        }
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, cliente.getCod());
+            pstm.execute();
+            System.out.println("Cliente removido.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover Cliente:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static Boolean exists(int id){
         Boolean exists = false;
         Connection conn = null;
@@ -167,6 +198,48 @@ public class ClienteDAO {
         }
         
         return exists;
+    }
+    
+    public static Boolean hasEndereco(Cliente cliente){
+        Boolean hasEndereco = false;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rset = null;
+        String query =  "SELECT ende.codRuaEndereco\n" +
+                        "FROM Cliente cli\n" +
+                        "JOIN Endereco ende ON ende.codCliente = cli.codCliente\n" +
+                        "WHERE cli.codCliente = ?;";
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, cliente.getCod());
+            rset = pstm.executeQuery();
+            
+            while (rset.next()){
+                if (rset.getInt("ende.codRuaEndereco") >= 0){
+                    hasEndereco = true;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (rset != null){
+                rset.close();
+                }
+                if (pstm != null){
+                pstm.close();
+                }
+                if (conn != null){
+                conn.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }   
+        }
+        
+        return hasEndereco;
     }
     
     public static Cliente getClienteByID(int id){

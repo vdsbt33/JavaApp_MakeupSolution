@@ -83,5 +83,37 @@ public class EnderecoDAO {
         }
     }
     
+    public static void Remover(Endereco endereco){
+        String query =  "DELETE FROM Endereco\n" +
+                        "WHERE codCliente = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, endereco.getCliente().getCod());
+            pstm.execute();
+            System.out.println("Endereço removido.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover Endereço:");
+                ex.printStackTrace();
+            }
+        }
+        
+        RuaEnderecoDAO.Remover(endereco.getRuaEndereco());
+        BairroEnderecoDAO.Remover(endereco.getBairroEndereco());
+        CidadeEnderecoDAO.Remover(endereco.getCidadeEndereco());
+    }
     
 }

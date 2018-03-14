@@ -81,6 +81,34 @@ public class BairroEnderecoDAO {
         }
     }
     
+    public static void Remover(BairroEndereco bairroEndereco){
+        String query =  "DELETE FROM BairroEndereco\n" +
+                        "WHERE codBairroEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, bairroEndereco.getCodBairroEndereco());
+            pstm.execute();
+            System.out.println("Bairro removido.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover Bairro:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static BairroEndereco getBairroEnderecoByID(int id){
         
         BairroEndereco bairroEndereco = null;

@@ -81,6 +81,34 @@ public class RuaEnderecoDAO {
         }
     }
     
+    public static void Remover(RuaEndereco ruaEndereco){
+        String query =  "DELETE FROM RuaEndereco\n" +
+                        "WHERE codRuaEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, ruaEndereco.getCodRuaEndereco());
+            pstm.execute();
+            System.out.println("Rua removida.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover Rua:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static RuaEndereco getRuaEnderecoByID(int id){
         
         RuaEndereco ruaEndereco = null;

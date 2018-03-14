@@ -159,7 +159,7 @@ public class JavaApp_MakeupSolution {
                 if (ClienteDAO.exists(id)){
                     Cliente cliente = ClienteDAO.getClienteByID(id);
                     Endereco endereco = ClienteDAO.getEnderecoCliente(cliente);
-                    ct.println("\n" + endereco.getRuaEndereco().getNomeRuaEndereco() + "\n");
+                    //ct.println("\n" + endereco.getRuaEndereco().getNomeRuaEndereco() + "\n");
 
                     String op2 = "";
                     while (!op2.equals("voltar")){
@@ -209,7 +209,7 @@ public class JavaApp_MakeupSolution {
                                 BairroEnderecoDAO.Adicionar(bairroEndereco);
                                 RuaEnderecoDAO.Adicionar(ruaEndereco);
                                 EnderecoDAO.Adicionar(novoEndereco);
-
+                                endereco = ClienteDAO.getEnderecoCliente(cliente);
                                 ct.pause();
                             } else if (endereco.getRuaEndereco() != null){
                                 if (op2.equals("cidade")){
@@ -229,7 +229,6 @@ public class JavaApp_MakeupSolution {
                             op2 = "";
                         }
                         
-                        ct.pause();
                     }
                 } else {
                     ct.println("\nNão há clientes com o id inserido.");
@@ -242,10 +241,51 @@ public class JavaApp_MakeupSolution {
     }
     
     public static void clientes_remover(){
-        ct.br(11);
-        ct.showTitleMessage();
-        ct.showSubtitleMessage("Clientes - Remover");        
-        ct.pause();
+        
+        Cliente cliente = null;
+        Endereco endereco = null;
+        String op1 = "";
+            
+        while (!op1.equals("voltar")) {
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Clientes - Remover");
+            op1 = ct.printr("Insira o ID do cliente ou voltar: ").toLowerCase();
+            
+            int id = 0;
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]") && ClienteDAO.exists(Integer.valueOf(op1))){
+                id = Integer.valueOf(op1);
+                if (ClienteDAO.exists(id)){
+                    cliente = ClienteDAO.getClienteByID(id);
+                    endereco = ClienteDAO.getEnderecoCliente(cliente);
+                    String op2 = "";
+                    while (!op2.equals("sim") && !op2.equals("nao")){
+                        ct.br(11);
+                        ct.showTitleMessage();
+                        ct.showSubtitleMessage("Clientes - Remover");
+                        if (cliente.getDescricao().isEmpty()){
+                            ct.print(String.valueOf(cliente.getCod()) + ". " + cliente.getNome() + " - " + "[SEM DESCRIÇÃO]" + " @ ");
+                        } else {
+                            ct.print(String.valueOf(cliente.getCod()) + ". " + cliente.getNome() + " - " + cliente.getDescricao() + " @ ");
+                        }
+                        if (endereco.getRuaEndereco() != null){
+                            ct.println(endereco.getCidadeEndereco().getNomeCidadeEndereco() + ", " + endereco.getBairroEndereco().getNomeBairroEndereco() + ", " + endereco.getRuaEndereco().getNomeRuaEndereco() + ", " + endereco.getNumeroEndereco());
+                        } else {
+                            ct.println("[NENHUM ENDEREÇO CADASTRADO]");
+                        }
+                        
+                        op2 = ct.printrln("\nDeseja realmente excluir esse cliente? [sim] [nao]");
+                        
+                        if (op2.equals("sim")){
+                            ClienteDAO.Remover(cliente);
+                            ct.pause();
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     public static void produtos(){

@@ -49,7 +49,7 @@ public class CidadeEnderecoDAO {
             }
             cidadeEndereco.setCodCidadeEndereco(lastid);
             return lastid;
-        }   
+        }
     }
     
     public static void Atualizar(CidadeEndereco cidadeEndereco){
@@ -81,6 +81,34 @@ public class CidadeEnderecoDAO {
                 ex.printStackTrace();
             }
             
+        }
+    }
+    
+    public static void Remover(CidadeEndereco cidadeEndereco){
+        String query =  "DELETE FROM CidadeEndereco\n" +
+                        "WHERE codCidadeEndereco = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, cidadeEndereco.getCodCidadeEndereco());
+            pstm.execute();
+            System.out.println("Cidade removida.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover Cidade:");
+                ex.printStackTrace();
+            }
         }
     }
     
