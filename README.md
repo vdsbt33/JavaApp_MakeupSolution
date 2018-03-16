@@ -17,7 +17,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [X] Create
 - [X] Read
 - [X] Update
-- [ ] Delete
+- [X] Delete
 
 #### Product
 - [ ] Create
