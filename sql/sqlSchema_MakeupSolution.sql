@@ -69,6 +69,9 @@ CREATE TABLE Agenda (
 
 
 /*
+/ // // // // // //
+  TESTING QUERIES  
+// // // // // // /
 
 SELECT * FROM Cliente;
 SELECT * FROM CidadeEndereco;
