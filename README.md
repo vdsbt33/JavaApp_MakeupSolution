@@ -14,8 +14,8 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [x] Delete
 
 #### CustomerOrder
-- [ ] Create
-- [ ] Read
+- [X] Create
+- [X] Read
 - [ ] Update
 - [ ] Delete
 
