@@ -13,10 +13,10 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [x] Update
 - [x] Delete
 
-#### CustomerOrder
+#### Agenda
 - [X] Create
 - [X] Read
-- [ ] Update
+- [X] Update
 - [ ] Delete
 
 #### Product
