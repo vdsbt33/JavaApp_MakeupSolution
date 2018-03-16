@@ -316,7 +316,7 @@ public class JavaApp_MakeupSolution {
                 agenda_listar();
                 
             } else if (op.equals("editar")){
-                //agenda_editar();
+                agenda_editar();
                 
             } else if (op.equals("remover")){
                 //agenda_remover();
@@ -382,6 +382,59 @@ public class JavaApp_MakeupSolution {
             }
 
         }
+    }
+    
+    public static void agenda_editar() throws Exception{
+        String op1 = "";
+        
+        while (!op1.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Clientes - Editar");
+            op1 = ct.printr("Insira o ID do registro ou voltar: ").toLowerCase();
+            
+            int id = 0;
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
+                id = Integer.valueOf(op1);
+                if (AgendaDAO.exists(id)){
+                    List<Agenda> agenda = new ArrayList<Agenda>();
+                    agenda = AgendaDAO.ListarPorId(id);
+                    String op2 = "";
+                    while (!op2.equals("voltar")){
+                        ct.br(11);
+                        ct.println("id. Nome : Custo | Data do registro / Data agendada");
+                        ct.println(agenda.get(0).getCodAgenda() + ". " + agenda.get(0).getCodCliente().getNome() + " : R$" + agenda.get(0).getValorAgenda() + " | " + AgendaDAO.LocalDateTimeToString(agenda.get(0).getDataHoraRegistradoAgenda()) + " / " + AgendaDAO.LocalDateTimeToString(agenda.get(0).getDataHoraAlvoAgenda()));
+                        
+                        ct.println("\nEscolha o que deseja editar: ");
+                        op2 = ct.printrln("[cliente] [custo] [data] [voltar]");
+
+                        if (!op2.equals("voltar")){
+                            
+                            if (op2.equals("cliente")){
+                                agenda.get(0).setCodCliente(ClienteDAO.getClienteByID(Integer.valueOf(ct.printr("ID Cliente: "))));
+                                AgendaDAO.Atualizar(agenda.get(0));
+                                
+                            } else if (op2.equals("custo")){
+                                agenda.get(0).setValorAgenda(Double.valueOf(ct.printr("Custo: ")));
+                                AgendaDAO.Atualizar(agenda.get(0));
+                                
+                            } else if (op2.equals("data")){
+                                agenda.get(0).setDataHoraAlvoAgenda(AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): ")));
+                                AgendaDAO.Atualizar(agenda.get(0));
+                            }
+                            ct.pause();
+                            op2 = "";
+                        }
+                        
+                    }
+                } else {
+                    ct.println("\nNão há registros com o id inserido.");
+                    ct.pause();
+                }
+            }
+        }
+        
     }
     
     /* 
