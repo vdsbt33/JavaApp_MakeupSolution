@@ -67,8 +67,6 @@ CREATE TABLE Agenda (
   FOREIGN KEY(codCliente) REFERENCES Cliente(codCliente)
 );
 
-select * from agenda;
-
 /*
 / // // // // // //
   TESTING QUERIES  

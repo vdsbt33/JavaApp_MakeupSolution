@@ -97,6 +97,35 @@ public class AgendaDAO {
         }
     }
     
+    public static void Remover(Agenda agenda){
+        String query =  "DELETE FROM Agenda\n" +
+                        "WHERE codAgenda = ?;";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, agenda.getCodAgenda());
+            pstm.execute();
+            System.out.println("Relatório da Agenda removido.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try{
+                if (pstm != null){
+                    pstm.close();
+                }
+                if (conn != null){
+                    conn.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao remover relatório da Agenda:");
+                ex.printStackTrace();
+            }
+        }
+    }
+    
     public static List<Agenda> ListarAnteriores(){
         String query =  "SELECT age.codAgenda, age.codCliente, cli.nomeCliente, cli.descricaoCliente, age.dataHoraAlvoAgenda, age.valorAgenda, age.dataHoraRegistradoAgenda\n" +
                         "FROM Agenda age\n" +

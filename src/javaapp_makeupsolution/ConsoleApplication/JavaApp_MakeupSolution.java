@@ -319,7 +319,7 @@ public class JavaApp_MakeupSolution {
                 agenda_editar();
                 
             } else if (op.equals("remover")){
-                //agenda_remover();
+                agenda_remover();
                 
             }
         }
@@ -339,15 +339,19 @@ public class JavaApp_MakeupSolution {
             
             op1 = ct.printr("Insira o ID do cliente ou voltar: ").toLowerCase();
             
-            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]") && ClienteDAO.exists(Integer.valueOf(op1))){
-                id = Integer.valueOf(op1);
-                
-                LocalDateTime dataHoraAlvo = AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): "));
-                double preco = Double.valueOf(ct.printr("Preço: "));
-                
-                AgendaDAO.Adicionar(new Agenda(ClienteDAO.getClienteByID(id), preco, dataHoraAlvo));
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
+                if (ClienteDAO.exists(Integer.valueOf(op1))){
+                    id = Integer.valueOf(op1);
+
+                    LocalDateTime dataHoraAlvo = AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): "));
+                    double preco = Double.valueOf(ct.printr("Preço: "));
+
+                    AgendaDAO.Adicionar(new Agenda(ClienteDAO.getClienteByID(id), preco, dataHoraAlvo));
+                } else {
+                    ct.println("\nNão há clientes com o id inserido.");
+                }
+                ct.pause();
             }
-            ct.pause();
         }
     }
     
@@ -422,6 +426,7 @@ public class JavaApp_MakeupSolution {
                             } else if (op2.equals("data")){
                                 agenda.get(0).setDataHoraAlvoAgenda(AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): ")));
                                 AgendaDAO.Atualizar(agenda.get(0));
+                                
                             }
                             ct.pause();
                             op2 = "";
@@ -432,6 +437,48 @@ public class JavaApp_MakeupSolution {
                     ct.println("\nNão há registros com o id inserido.");
                     ct.pause();
                 }
+            }
+        }
+        
+    }
+    
+    public static void agenda_remover(){
+        
+        String op1 = "";
+            
+        while (!op1.equals("voltar")) {
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Agenda - Remover");
+            op1 = ct.printr("Insira o ID do registro ou voltar: ").toLowerCase();
+            
+            int id = 0;
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
+                if (AgendaDAO.exists(Integer.valueOf(op1))){
+                    id = Integer.valueOf(op1);
+                    List<Agenda> agenda = new ArrayList<Agenda>();
+                    agenda = AgendaDAO.ListarPorId(id);
+                    String op2 = "";
+
+                    while (!op2.equals("sim") && !op2.equals("nao")){
+                        ct.br(11);
+                        ct.showTitleMessage();
+                        ct.showSubtitleMessage("Agenda - Remover");
+                        ct.println(agenda.get(0).getCodAgenda() + ". " + agenda.get(0).getCodCliente().getNome() + " : R$" + agenda.get(0).getValorAgenda() + " | " + AgendaDAO.LocalDateTimeToString(agenda.get(0).getDataHoraRegistradoAgenda()) + " / " + AgendaDAO.LocalDateTimeToString(agenda.get(0).getDataHoraAlvoAgenda()));
+
+                        op2 = ct.printrln("\nDeseja realmente excluir esse relatório da agenda? [sim] [nao]");
+
+                        if (op2.equals("sim")){
+                            AgendaDAO.Remover(agenda.get(0));
+                            ct.pause();
+                        }
+                    }
+                } else {
+                    ct.println("\nNão há registros com o id inserido.");
+                    ct.pause();
+                }
+                
             }
         }
         
