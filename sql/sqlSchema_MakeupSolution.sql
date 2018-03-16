@@ -56,6 +56,18 @@ CREATE TABLE Endereco (
   FOREIGN KEY (codRuaEndereco) REFERENCES RuaEndereco(codRuaEndereco)
 );
 
+CREATE TABLE Agenda (
+  codAgenda INT NOT NULL AUTO_INCREMENT,
+  codCliente INT NOT NULL,
+  valorAgenda DOUBLE(10,2) DEFAULT 0.0,
+  dataHoraRegistradoAgenda DATETIME NOT NULL,
+  dataHoraAlvoAgenda DATETIME NOT NULL,
+  
+  PRIMARY KEY(codAgenda),
+  FOREIGN KEY(codCliente) REFERENCES Cliente(codCliente)
+);
+
+
 /*
 
 SELECT * FROM Cliente;
@@ -80,5 +92,29 @@ INSERT INTO CidadeEndereco (
 );
 
 INSERT INTO BairroEndereco ( codCidadeEndereco, nomeBairroEndereco ) VALUES ( 2, "TesteBairro" );
+
+SELECT * FROM Cliente;
+SELECT * FROM Agenda;
+UPDATE Agenda SET concluidoAgenda = 0 WHERE codCliente = 1;
+
+INSERT INTO Agenda (
+  codCliente,
+  valorAgenda,
+  dataHoraRegistradoAgenda,
+  dataHoraAlvoAgenda
+) VALUES (
+  ?,
+  ?,
+  ?,
+  ?
+);
+
+# Show all from table Agenda except if time passed in register date ascendant order
+
+SELECT age.codAgenda, age.codCliente, cli.nomeCliente, cli.descricaoCliente, age.dataHoraAlvoAgenda, age.valorAgenda, age.dataHoraRegistradoAgenda
+FROM Agenda age
+LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente
+WHERE age.dataHoraAlvoAgenda < current_timestamp()
+ORDER BY age.dataHoraAlvoAgenda ASC;
 
 */

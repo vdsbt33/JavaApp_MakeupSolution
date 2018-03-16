@@ -12,6 +12,7 @@ import javaapp_makeupsolution.ConsoleApplication.Controller.*;
 import javaapp_makeupsolution.ConsoleApplication.Model.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -39,11 +40,13 @@ public class JavaApp_MakeupSolution {
         while (!op.equals("sair")){
             ct.showTitleMessage();
             ct.showSubtitleMessage("Menu");
-            ct.println("[clientes] [produtos] [sair]\n");
+            ct.println("[clientes] [agenda] [produtos] [sair]\n");
             op = ct.printr("Escolha uma opção: ").toLowerCase();
             
             if (op.equals("clientes")){
                 clientes();
+            } else if (op.equals("agenda")) {
+                agenda();
             } else if (op.equals("produtos")) {
                 produtos();
             } else if (op.equals("sair")) {
@@ -53,6 +56,10 @@ public class JavaApp_MakeupSolution {
             ct.br(11);
         }
     }
+    
+    /* 
+    CLIENTES
+    */
     
     public static void clientes() throws Exception{
         String op = "";
@@ -287,6 +294,98 @@ public class JavaApp_MakeupSolution {
         }
         
     }
+    
+    /* 
+    AGENDA
+    */
+    
+    public static void agenda() throws Exception{
+        String op = "";
+        
+        while (!op.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Agenda");
+            ct.println("[adicionar] [listar] [editar] [remover] [voltar]\n");
+            op = ct.printr("Escolha uma opção: ").toLowerCase();
+            
+            if (op.equals("adicionar")){
+                agenda_adicionar();
+                
+            } else if (op.equals("listar")){
+                agenda_listar();
+                
+            } else if (op.equals("editar")){
+                //agenda_editar();
+                
+            } else if (op.equals("remover")){
+                //agenda_remover();
+                
+            }
+        }
+    }
+    
+    public static void agenda_adicionar() throws Exception{
+        
+        String op1 = "";
+        
+        while (!op1.equals("voltar")){
+            
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Agenda - Adicionar");
+            
+            int id = 0;
+            
+            op1 = ct.printr("Insira o ID do cliente ou voltar: ").toLowerCase();
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]") && ClienteDAO.exists(Integer.valueOf(op1))){
+                id = Integer.valueOf(op1);
+                
+                LocalDateTime dataHoraAlvo = AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): "));
+                double preco = Double.valueOf(ct.printr("Preço: "));
+                
+                AgendaDAO.Adicionar(new Agenda(ClienteDAO.getClienteByID(id), preco, dataHoraAlvo));
+            }
+            ct.pause();
+        }
+    }
+    
+    public static void agenda_listar() {
+        
+        String op = "";
+        
+        while (!op.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Clientes - Listar");
+            op = ct.printrln("\nDeseja exibir maquiagens ja feitas, ainda nao feitas ou voltar? [feitas] [agendadas] [voltar]");
+
+            List<Agenda> agenda = new ArrayList<Agenda>();
+            if (op.equals("feitas")){
+                agenda = AgendaDAO.ListarAnteriores();
+            } else if (op.equals("agendadas")){
+                agenda = AgendaDAO.ListarProximas();
+            }
+            
+            if (op.equals("feitas") || op.equals("agendadas")){
+                ct.br();
+                if (!agenda.isEmpty()){
+                    for (int i = 0; i < agenda.size(); i++){
+                        ct.println(agenda.get(i).getCodAgenda() + ". " + agenda.get(i).getCodCliente().getNome() + " : R$" + agenda.get(i).getValorAgenda() + " | " + AgendaDAO.LocalDateTimeToString(agenda.get(i).getDataHoraRegistradoAgenda()) + " / " + AgendaDAO.LocalDateTimeToString(agenda.get(i).getDataHoraAlvoAgenda()));
+                    }
+                } else {
+                    ct.println("Não há registros na Agenda.");
+                }
+                ct.pause();
+            }
+
+        }
+    }
+    
+    /* 
+    PRODUTOS
+    */
     
     public static void produtos(){
         String op = "";
