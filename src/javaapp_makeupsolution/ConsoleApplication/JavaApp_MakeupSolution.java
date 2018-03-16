@@ -371,6 +371,7 @@ public class JavaApp_MakeupSolution {
             if (op.equals("feitas") || op.equals("agendadas")){
                 ct.br();
                 if (!agenda.isEmpty()){
+                    ct.println("id. Nome : Custo | Data do registro / Data agendada \n");
                     for (int i = 0; i < agenda.size(); i++){
                         ct.println(agenda.get(i).getCodAgenda() + ". " + agenda.get(i).getCodCliente().getNome() + " : R$" + agenda.get(i).getValorAgenda() + " | " + AgendaDAO.LocalDateTimeToString(agenda.get(i).getDataHoraRegistradoAgenda()) + " / " + AgendaDAO.LocalDateTimeToString(agenda.get(i).getDataHoraAlvoAgenda()));
                     }
