@@ -27,7 +27,7 @@ public class JavaApp_MakeupSolution {
     public static ConsoleText ct = new ConsoleText();
     
     public static void main(String[] args) throws Exception {
-        ct.setTitleMessage("MakeupSolution 0.1");
+        ct.setTitleMessage("MakeupSolution 1.0 (C.A.)");
         menu();
         
         

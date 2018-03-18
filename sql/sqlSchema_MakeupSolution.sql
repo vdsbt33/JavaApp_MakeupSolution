@@ -76,11 +76,6 @@ CREATE TABLE Produto (
   
   PRIMARY KEY(codProduto)
 );
-SELECT * FROM Produto;
-
-SELECT *
-FROM Produto
-WHERE  YEARWEEK(`dataProduto`, 1) = YEARWEEK(CURDATE(), 1);
 
 
 /*
@@ -134,6 +129,12 @@ FROM Agenda age
 LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente
 WHERE age.dataHoraAlvoAgenda < current_timestamp()
 ORDER BY age.dataHoraAlvoAgenda ASC;
+
+# Get week and between dates
+
+SELECT *
+FROM Produto
+WHERE  YEARWEEK(`dataProduto`, 1) = YEARWEEK(CURDATE(), 1);
 
 SELECT codProduto, nomeProduto, precoProduto, quantidadeProduto, dataProduto FROM Produto 
 WHERE dataProduto BETWEEN '2018-01-01' AND '2018-06-01';
