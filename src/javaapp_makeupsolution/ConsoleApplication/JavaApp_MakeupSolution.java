@@ -28,7 +28,7 @@ public class JavaApp_MakeupSolution {
     
     public static void main(String[] args) throws Exception {
         ct.setTitleMessage("MakeupSolution 0.1");
-        menu(); // <<< this one should be a class, along with all others. Create object here then call it
+        menu();
         
         
         ct.println("\nMakeupSolution encerrado.");
@@ -494,11 +494,163 @@ public class JavaApp_MakeupSolution {
         while (!op.equals("voltar")){
             ct.br(11);
             ct.showTitleMessage();
-            ct.showSubtitleMessage("Produtos");
+            ct.showSubtitleMessage("Relatórios de Produtos");
             ct.println("[adicionar] [listar] [editar] [remover] [voltar]\n");
             op = ct.printr("Escolha uma opção: ").toLowerCase();
+            
+            if (op.equals("adicionar")){
+                produtos_adicionar();
+            }else if (op.equals("listar")){
+                produtos_listar();
+            } else if (op.equals("editar")){
+                produtos_editar();
+            } else if(op.equals("remover")){
+                produtos_remover();
+            }
         }
         
+    }
+    
+    public static void produtos_adicionar(){
+        
+        ct.br(11);
+        ct.showTitleMessage();
+        ct.showSubtitleMessage("Relatórios de Produtos - Adicionar");
+
+
+        Produto produto = new Produto(ct.printr("Nome: "), Double.valueOf(ct.printr("\nPreço: ")), Integer.valueOf(ct.printr("\nQuantidade: ")), AgendaDAO.StringToLocalDateTime(ct.printr("Data e hora (Ex: " + AgendaDAO.LocalDateTimeToString(LocalDateTime.now()) + "): ")));
+        ProdutoDAO.Adicionar(produto);
+        
+        ct.pause();
+    }
+    
+    public static void produtos_listar(){
+        String op = "";
+        
+        while (!op.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Relatórios de Produtos - Listar");
+            op = ct.printrln("\nDeseja exibir relatórios de qual data? [semana] [mes] [ano] [todos] [voltar]");
+
+            List<Produto> produtos = new ArrayList<Produto>();
+            if (op.equals("semana")){
+                produtos = ProdutoDAO.SemanaListar();
+            } else if (op.equals("mes")){
+                produtos = ProdutoDAO.MesListar();
+            } else if (op.equals("ano")){
+                produtos = ProdutoDAO.AnoListar();
+            } else if (op.equals("todos")){
+                produtos = ProdutoDAO.TodosListar();
+            }
+            
+            if (op.equals("semana") || op.equals("mes") || op.equals("ano") || op.equals("todos")){
+                ct.br();
+                if (!produtos.isEmpty()){
+                    ct.println("id. Nome : Preço - Quantidade | Data compra \n");
+                    double total = 0.0;
+                    for (int i = 0; i < produtos.size(); i++){
+                        ct.println(produtos.get(i).getCodProduto() + ". " + produtos.get(i).getNomeProduto() + " : R$" + produtos.get(i).getPrecoProduto() + " - " + produtos.get(i).getQuantidadeProduto() + " | " + AgendaDAO.LocalDateTimeToString(produtos.get(i).getDataProduto()));
+                        total += produtos.get(i).getPrecoProduto();
+                    }
+                    ct.println("Custo total: " + total + "\n");
+                } else {
+                    ct.println("Não há registros de compras para a opção selecionada.");
+                }
+                ct.pause();
+            }
+
+        }
+    }
+    
+    public static void produtos_editar(){
+        
+        String op1 = "";
+        
+        while (!op1.equals("voltar")){
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Relatórios de Produtos - Editar");
+            op1 = ct.printr("Insira o ID do relatório ou voltar: ").toLowerCase();
+            
+            int id = 0;
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
+                id = Integer.valueOf(op1);
+                if (ProdutoDAO.exists(id)){
+                    Produto produto = ProdutoDAO.getProdutoByID(id);
+
+                    String op2 = "";
+                    while (!op2.equals("voltar")){
+                        ct.br(11);
+                        ct.println("\nid. Nome : Custo - Quantidade | Data compra");
+
+                        ct.println(produto.getCodProduto() + ". " + produto.getNomeProduto() + " : R$" + produto.getPrecoProduto() + " - " + produto.getQuantidadeProduto() + " | " + AgendaDAO.LocalDateTimeToString(produto.getDataProduto()));
+                        
+                        ct.print("\nEscolha o que deseja editar:");
+
+                        op2 = ct.printrln("\n[nome] [custo] [quantidade] [data] [voltar]").toLowerCase();
+
+                        if (!op2.equals("voltar")){
+                            
+                            if (op2.equals("nome")){
+                                produto.setNomeProduto(ct.printr("Nome anterior: " + produto.getNomeProduto() + "\nNome novo: "));
+                            } else if (op2.equals("custo")){
+                                produto.setPrecoProduto(Double.valueOf(ct.printr("Preço anterior: R$" + produto.getPrecoProduto() + "\nPreço novo: R$")));
+                            } else if (op2.equals("quantidade")){
+                                produto.setQuantidadeProduto(Integer.valueOf(ct.printr("Quantidade: " + produto.getQuantidadeProduto()+ "\nQuantidade nova: ")));
+                            } else if (op2.equals("data")){
+                                produto.setDataProduto(AgendaDAO.StringToLocalDateTime(ct.printr("Data de compra anterior: " + AgendaDAO.LocalDateTimeToString(produto.getDataProduto()) + "\nData de compra nova: ")));
+                            }
+                            ProdutoDAO.Atualizar(produto);
+                            op2 = "";
+                        }
+                        
+                    }
+                } else {
+                    ct.println("\nNão há relatórios com o id inserido.");
+                    ct.pause();
+                }
+            }
+            
+        }
+    }
+    
+    public static void produtos_remover(){
+        Produto produto = null;
+        String op1 = "";
+            
+        while (!op1.equals("voltar")) {
+            ct.br(11);
+            ct.showTitleMessage();
+            ct.showSubtitleMessage("Relatórios de Produtos - Remover");
+            op1 = ct.printr("Insira o ID do relatório ou voltar: ").toLowerCase();
+            
+            int id = 0;
+            
+            if (!op1.equals("voltar") && op1.substring(0, 1).matches("[0-9]")){
+                id = Integer.valueOf(op1);
+                if (ProdutoDAO.exists(id)){
+                    produto = ProdutoDAO.getProdutoByID(id);
+                    String op2 = "";
+                    while (!op2.equals("sim") && !op2.equals("nao")){
+                        ct.br(11);
+                        ct.showTitleMessage();
+                        ct.showSubtitleMessage("Relatórios de Produtos - Remover");
+                        
+                        ct.println("\nid. Nome : Custo - Quantidade | Data compra");
+                        ct.println(produto.getCodProduto() + ". " + produto.getNomeProduto() + " : R$" + produto.getPrecoProduto() + " - " + produto.getQuantidadeProduto() + " | " + AgendaDAO.LocalDateTimeToString(produto.getDataProduto()));
+                        
+                        op2 = ct.printrln("\nDeseja realmente excluir esse relatório? [sim] [nao]");
+                        
+                        if (op2.equals("sim")){
+                            ProdutoDAO.Remover(produto);
+                            ct.pause();
+                        }
+                    }
+                }
+            }
+        }
     }
     
     public static String sair(){

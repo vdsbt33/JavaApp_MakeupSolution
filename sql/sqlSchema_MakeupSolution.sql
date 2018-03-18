@@ -29,8 +29,8 @@ CREATE TABLE RuaEndereco(
 
 CREATE TABLE Cliente (
   codCliente INT NOT NULL AUTO_INCREMENT,
-  nomeCliente VARCHAR(100),
-  descricaoCliente VARCHAR(500),
+  nomeCliente VARCHAR(100) NOT NULL,
+  descricaoCliente VARCHAR(500) DEFAULT "",
   
   PRIMARY KEY(codCliente)
 );
@@ -66,6 +66,22 @@ CREATE TABLE Agenda (
   PRIMARY KEY(codAgenda),
   FOREIGN KEY(codCliente) REFERENCES Cliente(codCliente)
 );
+
+CREATE TABLE Produto (
+  codProduto INT NOT NULL AUTO_INCREMENT,
+  nomeProduto VARCHAR(100) NOT NULL,
+  precoProduto DOUBLE(10,2) DEFAULT 0.0,
+  quantidadeProduto INT DEFAULT 0,
+  dataProduto DATETIME NOT NULL,
+  
+  PRIMARY KEY(codProduto)
+);
+SELECT * FROM Produto;
+
+SELECT *
+FROM Produto
+WHERE  YEARWEEK(`dataProduto`, 1) = YEARWEEK(CURDATE(), 1);
+
 
 /*
 / // // // // // //
@@ -118,5 +134,8 @@ FROM Agenda age
 LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente
 WHERE age.dataHoraAlvoAgenda < current_timestamp()
 ORDER BY age.dataHoraAlvoAgenda ASC;
+
+SELECT codProduto, nomeProduto, precoProduto, quantidadeProduto, dataProduto FROM Produto 
+WHERE dataProduto BETWEEN '2018-01-01' AND '2018-06-01';
 
 */
