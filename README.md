@@ -7,6 +7,25 @@ Learning Java while helping my sister out.
 If you want to try it out, don't forget to create the database using the [.sql file](/sql/sqlSchema_MakeupSolution.sql).
 
 ## Progress
+### Swing
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
+#### Agenda
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
+#### Product
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
+### Console Application
 #### Customer
 - [x] Create
 - [x] Read
@@ -20,7 +39,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [X] Delete
 
 #### Product
-- [ ] Create
-- [ ] Read
-- [ ] Update
-- [ ] Delete
+- [X] Create
+- [X] Read
+- [X] Update
+- [X] Delete
