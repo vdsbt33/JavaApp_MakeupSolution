@@ -8,7 +8,8 @@ If you want to try it out, don't forget to create the database using the [.sql f
 
 ## Progress
 ### Swing
-- [ ] Create
+#### Cliente
+- [X] Create
 - [ ] Read
 - [ ] Update
 - [ ] Delete
@@ -19,14 +20,14 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [ ] Update
 - [ ] Delete
 
-#### Product
+#### Produto
 - [ ] Create
 - [ ] Read
 - [ ] Update
 - [ ] Delete
 
 ### Console Application
-#### Customer
+#### Cliente
 - [x] Create
 - [x] Read
 - [x] Update
@@ -38,7 +39,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [X] Update
 - [X] Delete
 
-#### Product
+#### Produto
 - [X] Create
 - [X] Read
 - [X] Update
