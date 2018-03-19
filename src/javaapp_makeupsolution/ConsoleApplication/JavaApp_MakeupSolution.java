@@ -5,11 +5,23 @@
  */
 package javaapp_makeupsolution.ConsoleApplication;
 
+import javaapp_makeupsolution.Controller.EnderecoDAO;
+import javaapp_makeupsolution.Controller.CidadeEnderecoDAO;
+import javaapp_makeupsolution.Controller.AgendaDAO;
+import javaapp_makeupsolution.Controller.BairroEnderecoDAO;
+import javaapp_makeupsolution.Controller.ClienteDAO;
+import javaapp_makeupsolution.Controller.ProdutoDAO;
+import javaapp_makeupsolution.Controller.RuaEnderecoDAO;
+import javaapp_makeupsolution.Model.Produto;
+import javaapp_makeupsolution.Model.Agenda;
+import javaapp_makeupsolution.Model.RuaEndereco;
+import javaapp_makeupsolution.Model.CidadeEndereco;
+import javaapp_makeupsolution.Model.BairroEndereco;
+import javaapp_makeupsolution.Model.Endereco;
+import javaapp_makeupsolution.Model.Cliente;
 import javaapp_makeupsolution.ConsoleApplication.lib.ConsoleText;
-import javaapp_makeupsolution.ConsoleApplication.Controller.ConnectionFactory;
+import javaapp_makeupsolution.Controller.ConnectionFactory;
 import java.sql.Connection;
-import javaapp_makeupsolution.ConsoleApplication.Controller.*;
-import javaapp_makeupsolution.ConsoleApplication.Model.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;

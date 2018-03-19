@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapp_makeupsolution.ConsoleApplication.Controller;
+package javaapp_makeupsolution.Controller;
 
-import javaapp_makeupsolution.ConsoleApplication.Model.Cliente;
-import javaapp_makeupsolution.ConsoleApplication.Model.Endereco;
-import javaapp_makeupsolution.ConsoleApplication.Model.CidadeEndereco;
-import javaapp_makeupsolution.ConsoleApplication.Model.BairroEndereco;
-import javaapp_makeupsolution.ConsoleApplication.Model.RuaEndereco;
+import javaapp_makeupsolution.Model.Cliente;
+import javaapp_makeupsolution.Model.Endereco;
+import javaapp_makeupsolution.Model.CidadeEndereco;
+import javaapp_makeupsolution.Model.BairroEndereco;
+import javaapp_makeupsolution.Model.RuaEndereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

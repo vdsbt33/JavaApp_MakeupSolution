@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapp_makeupsolution.ConsoleApplication.Controller;
+package javaapp_makeupsolution.Controller;
 
-import javaapp_makeupsolution.ConsoleApplication.Model.Agenda;
+import javaapp_makeupsolution.Model.Agenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapp_makeupsolution.ConsoleApplication.Model;
+package javaapp_makeupsolution.Model;
 
 /**
  *

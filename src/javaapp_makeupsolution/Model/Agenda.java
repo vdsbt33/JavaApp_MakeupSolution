@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapp_makeupsolution.ConsoleApplication.Model;
+package javaapp_makeupsolution.Model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import javaapp_makeupsolution.ConsoleApplication.Model.Cliente;
+import javaapp_makeupsolution.Model.Cliente;
 
 /**
  *
