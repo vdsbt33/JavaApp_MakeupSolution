@@ -31,9 +31,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nomeListarTbox" min="-2" pref="198" max="-2" attributes="0"/>
+                      <Component id="nomeListarTbox" min="-2" pref="182" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="atualizarBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
