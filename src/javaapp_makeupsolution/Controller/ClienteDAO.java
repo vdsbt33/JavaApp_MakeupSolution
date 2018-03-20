@@ -59,6 +59,13 @@ public class ClienteDAO {
         return ClienteDAO.getListClientes(query);
     }
     
+    public static List<Cliente> getClienteByName(String name){
+        String query =  "SELECT codCliente, nomeCliente, descricaoCliente\n" +
+                        "FROM Cliente\n"+
+                        "WHERE nomeCliente LIKE '" + name + "%';";
+        return ClienteDAO.getListClientes(query);
+    }
+    
     public static List<Cliente> getListClientes(String query){
         List<Cliente> clientes = new ArrayList<Cliente>();
         
@@ -249,7 +256,7 @@ public class ClienteDAO {
         ResultSet rset = null;
         String query =  "SELECT codCliente, nomeCliente, descricaoCliente\n" +
                         "FROM Cliente\n"+
-                        "WHERE codCliente = ?";
+                        "WHERE codCliente = ?;";
         
         try {
             conn = ConnectionFactory.createConnectionToMySQL();

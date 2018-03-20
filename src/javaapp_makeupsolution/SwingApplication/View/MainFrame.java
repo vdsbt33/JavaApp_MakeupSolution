@@ -79,13 +79,18 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem1.setName("ClienteAdicionarBtn"); // NOI18N
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClientesAdicionarBtn_onClick(evt);
+                clientesAdicionarBtn_onClick(evt);
             }
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem2.setText("Listar");
+        jMenuItem2.setText("Buscar");
         jMenuItem2.setName("ClienteListarBtn"); // NOI18N
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesListarBtn_onClick(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuItem3.setText("Editar");
@@ -171,10 +176,15 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ClientesAdicionarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesAdicionarBtn_onClick
+    private void clientesAdicionarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesAdicionarBtn_onClick
         Clientes_Adicionar clientes_adicionar = Clientes_Adicionar.getSelf();
         clientes_adicionar.setVisible(true);
-    }//GEN-LAST:event_ClientesAdicionarBtn_onClick
+    }//GEN-LAST:event_clientesAdicionarBtn_onClick
+
+    private void clientesListarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesListarBtn_onClick
+        Clientes_Listar clientes_listar = Clientes_Listar.getSelf();
+        clientes_listar.setVisible(true);
+    }//GEN-LAST:event_clientesListarBtn_onClick
 
     /**
      * @param args the command line arguments
