@@ -162,10 +162,8 @@ public class Clientes_Listar extends javax.swing.JFrame {
         
         clientes = ClienteDAO.getClienteByName(nomeListarTbox.getText());
         DefaultTableModel model = (DefaultTableModel) clientesTable.getModel();
-        
-        for (int i = 0; i < model.getRowCount(); i++){
-            model.removeRow(i);
-        }
+        model.setRowCount(0);
+                
         if (!clientes.isEmpty() && !nomeListarTbox.getText().isEmpty()){
             
             Object[] columnsName = { "id", "Nome", "Descricao", "Endereco" };
@@ -181,6 +179,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
                     rowData[3] = enderecoCliente;
                 }
                 model.addRow(rowData);
+                rowData[3] = "";
             }
         } else {
             clientesTable.removeAll();

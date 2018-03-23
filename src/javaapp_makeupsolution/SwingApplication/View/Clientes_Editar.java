@@ -172,11 +172,9 @@ public class Clientes_Editar extends javax.swing.JFrame {
         */
         
         endereco = Endereco_Editar.getSelf(cliente);
-            if (ClienteDAO.hasEndereco(cliente)){
-                endereco.atualizarCampos();
-            } else {
-                endereco.limparCampos();
-            }
+        
+        
+        endereco.atualizarCampos();
         
         
         this.setVisible(false);
@@ -221,25 +219,28 @@ public class Clientes_Editar extends javax.swing.JFrame {
                 }
             }
         } else {
-            if (!Endereco_Editar.getClienteEndereco().getCidadeEndereco().getNomeCidadeEndereco().isEmpty()) {
-                if (!Endereco_Editar.getClienteEndereco().getBairroEndereco().getNomeBairroEndereco().isEmpty()){
-                    if (!Endereco_Editar.getClienteEndereco().getRuaEndereco().getNomeRuaEndereco().isEmpty()){
-                        Endereco_Editar.getClienteEndereco().setCliente(cliente);
-                        try {
-                            CidadeEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getCidadeEndereco());
-                            BairroEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getBairroEndereco());
-                            RuaEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getRuaEndereco());
-                            EnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco());
-                            JOptionPane.showMessageDialog(null, "Endereço adicionado com sucesso!");
+            if(Endereco_Editar.getClienteEndereco() != null){
+                if (!Endereco_Editar.getClienteEndereco().getCidadeEndereco().getNomeCidadeEndereco().isEmpty()) {
+                    if (!Endereco_Editar.getClienteEndereco().getBairroEndereco().getNomeBairroEndereco().isEmpty()){
+                        if (!Endereco_Editar.getClienteEndereco().getRuaEndereco().getNomeRuaEndereco().isEmpty()){
+                            Endereco_Editar.getClienteEndereco().setCliente(cliente);
+                            try {
+                                CidadeEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getCidadeEndereco());
+                                BairroEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getBairroEndereco());
+                                RuaEnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco().getRuaEndereco());
+                                EnderecoDAO.Adicionar(Endereco_Editar.getClienteEndereco());
+                                JOptionPane.showMessageDialog(null, "Endereço adicionado com sucesso!");
 
-                        } catch (Exception ex){
-                            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao adicionar o Endereco. \nErro:" + ex.getMessage());
-                            error = true;
+                            } catch (Exception ex){
+                                JOptionPane.showMessageDialog(null, "Um erro ocorreu ao adicionar o Endereco. \nErro:" + ex.getMessage());
+                                error = true;
+                            }
+
                         }
-
                     }
                 }
             }
+            
         }
         
         if (error == false){

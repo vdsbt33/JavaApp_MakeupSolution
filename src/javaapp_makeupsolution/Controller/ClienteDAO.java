@@ -212,11 +212,10 @@ public class ClienteDAO {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
-        String query =  "SELECT ende.codRuaEndereco\n" +
-                        "FROM Cliente cli\n" +
-                        "JOIN Endereco ende ON ende.codCliente = cli.codCliente\n" +
-                        "WHERE cli.codCliente = ?;";
-        
+        String query =  "SELECT COUNT(codCliente) AS 'hasEndereco'\n" +
+                        "FROM Endereco\n" +
+                        "WHERE codCliente = ?;";
+                
         try {
             conn = ConnectionFactory.createConnectionToMySQL();
             pstm = conn.prepareStatement(query);
@@ -224,8 +223,10 @@ public class ClienteDAO {
             rset = pstm.executeQuery();
             
             while (rset.next()){
-                if (rset.getInt("ende.codRuaEndereco") >= 0){
+                if (rset.getInt("hasEndereco") == 1){
                     hasEndereco = true;
+                } else {
+                    hasEndereco = false;
                 }
             }
         } catch (Exception ex) {

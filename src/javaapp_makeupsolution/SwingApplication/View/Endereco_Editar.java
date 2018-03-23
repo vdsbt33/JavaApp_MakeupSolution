@@ -11,6 +11,7 @@ import javaapp_makeupsolution.Model.Endereco;
 import javaapp_makeupsolution.Model.CidadeEndereco;
 import javaapp_makeupsolution.Model.BairroEndereco;
 import javaapp_makeupsolution.Model.RuaEndereco;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,13 +35,19 @@ public class Endereco_Editar extends javax.swing.JFrame {
         if (self == null){
             self = new Endereco_Editar();
         }
+
+        if (clienteAlvo != cliente) {
+            if (ClienteDAO.hasEndereco(clienteAlvo)){
+                endereco = ClienteDAO.getEnderecoCliente(clienteAlvo);
+            } else {
+                endereco = null;
+            }
+            
+        }
+        
         cliente = clienteAlvo;
         
-        if (ClienteDAO.hasEndereco(cliente)){
-            endereco = ClienteDAO.getEnderecoCliente(cliente);
-        } else {
-            endereco = null;
-        }
+        
         
         return self;
     }
@@ -54,10 +61,14 @@ public class Endereco_Editar extends javax.swing.JFrame {
     }
 
     public void atualizarCampos(){
-        this.cidadeEnderecoTbox.setText(endereco.getCidadeEndereco().getNomeCidadeEndereco());
-        this.bairroEnderecoTbox.setText(endereco.getBairroEndereco().getNomeBairroEndereco());
-        this.ruaEnderecoTbox.setText(endereco.getRuaEndereco().getNomeRuaEndereco());
-        this.numeroEnderecoSpinner.setValue(endereco.getNumeroEndereco());
+        if (endereco == null) {
+            limparCampos();
+        } else {
+            this.cidadeEnderecoTbox.setText(endereco.getCidadeEndereco().getNomeCidadeEndereco());
+            this.bairroEnderecoTbox.setText(endereco.getBairroEndereco().getNomeBairroEndereco());
+            this.ruaEnderecoTbox.setText(endereco.getRuaEndereco().getNomeRuaEndereco());
+            this.numeroEnderecoSpinner.setValue(endereco.getNumeroEndereco());
+        }
     }
     
     public void limparCampos(){
@@ -192,17 +203,28 @@ public class Endereco_Editar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarBtnAdicionarBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnAdicionarBtn
-
-        CidadeEndereco cidadeEndereco = new CidadeEndereco(this.cidadeEnderecoTbox.getText());
-
-        BairroEndereco bairroEndereco = new BairroEndereco(cidadeEndereco, this.bairroEnderecoTbox.getText());
-
-        RuaEndereco ruaEndereco = new RuaEndereco(bairroEndereco, this.ruaEnderecoTbox.getText());
-        // Há algo aqui
-        endereco = new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, (int) this.numeroEnderecoSpinner.getValue());
         
-        this.setVisible(false);
-        Clientes_Editar.getSelf().setVisible(true);
+        Boolean erro = false;
+        if (!this.cidadeEnderecoTbox.getText().isEmpty()) {
+            if (!this.bairroEnderecoTbox.getText().isEmpty()) {
+                if (!this.ruaEnderecoTbox.getText().isEmpty()) {
+                    CidadeEndereco cidadeEndereco = new CidadeEndereco(this.cidadeEnderecoTbox.getText());
+
+                    BairroEndereco bairroEndereco = new BairroEndereco(cidadeEndereco, this.bairroEnderecoTbox.getText());
+
+                    RuaEndereco ruaEndereco = new RuaEndereco(bairroEndereco, this.ruaEnderecoTbox.getText());
+                    endereco = new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, (int) this.numeroEnderecoSpinner.getValue());
+
+                    this.setVisible(false);
+                    Clientes_Editar.getSelf().setVisible(true);
+                } else { erro = true; }
+            } else { erro = true; }
+        } else { erro = true; }
+        
+        if (erro == true) {
+            JOptionPane.showMessageDialog(null, "Há campos ainda não preenchidos.");
+        }
+        
     }//GEN-LAST:event_guardarBtnAdicionarBtn
 
     public static Endereco getClienteEndereco(){
