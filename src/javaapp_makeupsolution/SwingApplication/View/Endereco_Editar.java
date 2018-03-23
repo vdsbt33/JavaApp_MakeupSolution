@@ -231,6 +231,10 @@ public class Endereco_Editar extends javax.swing.JFrame {
         return endereco;
     }
     
+    public static void setClienteEndereco(Endereco alvo) {
+        endereco = alvo;
+    }
+    
     private void cancelarBtnCancelarBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnCancelarBtn
         this.setVisible(false);
         Clientes_Editar.getSelf().setVisible(true);
