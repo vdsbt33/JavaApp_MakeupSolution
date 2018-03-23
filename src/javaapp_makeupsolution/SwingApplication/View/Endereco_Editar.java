@@ -5,37 +5,69 @@
  */
 package javaapp_makeupsolution.SwingApplication.View;
 
+import javaapp_makeupsolution.Controller.ClienteDAO;
 import javaapp_makeupsolution.Model.Cliente;
 import javaapp_makeupsolution.Model.Endereco;
 import javaapp_makeupsolution.Model.CidadeEndereco;
 import javaapp_makeupsolution.Model.BairroEndereco;
 import javaapp_makeupsolution.Model.RuaEndereco;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author vdsbt33
  */
-public class Endereco_Adicionar extends javax.swing.JFrame {
+public class Endereco_Editar extends javax.swing.JFrame {
 
-    private static Endereco_Adicionar self = null;
+    private static Endereco_Editar self = null;
     
+    private static Cliente cliente = null;
     private static Endereco endereco = null;
     
     /**
-     * Creates new form Endereco_Adicionar
+     * Creates new form Endereco_Editar
      */
-    private Endereco_Adicionar() {
+    private Endereco_Editar() {
         initComponents();
     }
     
-    public static Endereco_Adicionar getSelf(){
+    public static Endereco_Editar getSelf(Cliente clienteAlvo){
         if (self == null){
-            self = new Endereco_Adicionar();
+            self = new Endereco_Editar();
         }
+        cliente = clienteAlvo;
+        
+        if (ClienteDAO.hasEndereco(cliente)){
+            endereco = ClienteDAO.getEnderecoCliente(cliente);
+        } else {
+            endereco = null;
+        }
+        
+        return self;
+    }
+    
+    public static Endereco_Editar getSelf(){
+        if (self == null){
+            self = new Endereco_Editar();
+        }
+        endereco = null;
         return self;
     }
 
+    public void atualizarCampos(){
+        this.cidadeEnderecoTbox.setText(endereco.getCidadeEndereco().getNomeCidadeEndereco());
+        this.bairroEnderecoTbox.setText(endereco.getBairroEndereco().getNomeBairroEndereco());
+        this.ruaEnderecoTbox.setText(endereco.getRuaEndereco().getNomeRuaEndereco());
+        this.numeroEnderecoSpinner.setValue(endereco.getNumeroEndereco());
+    }
+    
+    public void limparCampos(){
+        this.cidadeEnderecoTbox.setText("");
+        this.bairroEnderecoTbox.setText("");
+        this.ruaEnderecoTbox.setText("");
+        this.numeroEnderecoSpinner.setValue(0);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,17 +84,17 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
         bairroEnderecoTbox = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ruaEnderecoTbox = new javax.swing.JTextField();
-        numeroEnderecoSpinner = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
+        numeroEnderecoSpinner = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         guardarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
 
-        setAlwaysOnTop(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Endereço - Adicionar");
+        jLabel1.setText("Endereço - Editar");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Cidade:");
@@ -108,7 +140,7 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,7 +159,7 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(numeroEnderecoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,42 +183,26 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroEnderecoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void limparCampos(){
-        this.cidadeEnderecoTbox.setText("");
-        this.bairroEnderecoTbox.setText("");
-        this.ruaEnderecoTbox.setText("");
-        this.numeroEnderecoSpinner.setValue(0);
-    }
-    
     private void guardarBtnAdicionarBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnAdicionarBtn
-        Boolean erro = false;
-        if (!this.cidadeEnderecoTbox.getText().isEmpty()) {
-            if (!this.bairroEnderecoTbox.getText().isEmpty()) {
-                if (!this.ruaEnderecoTbox.getText().isEmpty()) {
-                    CidadeEndereco cidadeEndereco = new CidadeEndereco(this.cidadeEnderecoTbox.getText());
-                    BairroEndereco bairroEndereco = new BairroEndereco(cidadeEndereco, this.bairroEnderecoTbox.getText());
-                    RuaEndereco ruaEndereco = new RuaEndereco(bairroEndereco, this.ruaEnderecoTbox.getText());
 
-                    endereco = new Endereco(new Cliente("", ""), cidadeEndereco, bairroEndereco, ruaEndereco, (int) this.numeroEnderecoSpinner.getValue());
+        CidadeEndereco cidadeEndereco = new CidadeEndereco(this.cidadeEnderecoTbox.getText());
 
-                    this.setVisible(false);
-                    Clientes_Adicionar.getSelf().setVisible(true);
-                } else { erro = true; }
-            } else { erro = true; }
-        } else { erro = true; }
+        BairroEndereco bairroEndereco = new BairroEndereco(cidadeEndereco, this.bairroEnderecoTbox.getText());
+
+        RuaEndereco ruaEndereco = new RuaEndereco(bairroEndereco, this.ruaEnderecoTbox.getText());
+        // Há algo aqui
+        endereco = new Endereco(cliente, cidadeEndereco, bairroEndereco, ruaEndereco, (int) this.numeroEnderecoSpinner.getValue());
         
-        if (erro == true) {
-            JOptionPane.showMessageDialog(null, "Há campos ainda não preenchidos.");
-        }
-        
+        this.setVisible(false);
+        Clientes_Editar.getSelf().setVisible(true);
     }//GEN-LAST:event_guardarBtnAdicionarBtn
 
     public static Endereco getClienteEndereco(){
@@ -195,7 +211,7 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
     
     private void cancelarBtnCancelarBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnCancelarBtn
         this.setVisible(false);
-        Clientes_Adicionar.getSelf().setVisible(true);
+        Clientes_Editar.getSelf().setVisible(true);
     }//GEN-LAST:event_cancelarBtnCancelarBtn
 
     /**
@@ -215,20 +231,20 @@ public class Endereco_Adicionar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Endereco_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Endereco_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Endereco_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Endereco_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Endereco_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Endereco_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Endereco_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Endereco_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Endereco_Adicionar().setVisible(true);
+                new Endereco_Editar().setVisible(true);
             }
         });
     }

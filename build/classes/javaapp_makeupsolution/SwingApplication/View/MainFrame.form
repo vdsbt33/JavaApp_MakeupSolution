@@ -20,7 +20,7 @@
                     <Property name="name" type="java.lang.String" value="ClienteAdicionarBtn" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clientesAdicionarBtn_onClick"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarClienteBtn_onClick"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
@@ -29,20 +29,8 @@
                     <Property name="name" type="java.lang.String" value="ClienteListarBtn" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clientesListarBtn_onClick"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarClienteBtn_onClick"/>
                   </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Editar"/>
-                    <Property name="name" type="java.lang.String" value="ClienteEditarBtn" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Remover"/>
-                    <Property name="name" type="java.lang.String" value="ClienteRemoverBtn" noResource="true"/>
-                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
