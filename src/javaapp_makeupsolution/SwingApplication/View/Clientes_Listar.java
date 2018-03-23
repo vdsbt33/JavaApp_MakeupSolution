@@ -88,6 +88,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        clientesTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(clientesTable);
 
         atualizarBtn.setText("Atualizar");
