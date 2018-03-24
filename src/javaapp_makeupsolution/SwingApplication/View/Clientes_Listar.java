@@ -22,7 +22,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
 
     private static Clientes_Listar self = null;
     
-    List<Cliente> clientes = null;
+    private List<Cliente> clientes = null;
     
     /**
      * Creates new form Clientes_Listar
@@ -92,7 +92,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
         clientesTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(clientesTable);
 
-        atualizarBtn.setText("Atualizar");
+        atualizarBtn.setText("Buscar");
         atualizarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atualizarBtn_onClick(evt);
@@ -133,8 +133,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nomeListarTbox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizarBtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(atualizarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(agendarClienteBtn)

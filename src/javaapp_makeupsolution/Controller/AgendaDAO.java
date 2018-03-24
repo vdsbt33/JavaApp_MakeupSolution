@@ -9,9 +9,12 @@ import javaapp_makeupsolution.Model.Agenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -188,6 +191,16 @@ public class AgendaDAO {
         return agenda;
     }
     
+    public static List<Agenda> getListAgendaBetween(LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException{
+        String query =  "SELECT age.codAgenda, age.codCliente, age.valorAgenda, age.dataHoraRegistradoAgenda, age.dataHoraAlvoAgenda\n" +
+                        "FROM Agenda age\n" +
+                        "LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente\n" +
+                        "WHERE age.dataHoraAlvoAgenda BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim) + "';";
+
+        
+        return AgendaDAO.getListAgenda(query);
+    }
+    
     public static Boolean exists(int id){
         Boolean exists = false;
         Connection conn = null;
@@ -245,6 +258,10 @@ public class AgendaDAO {
         return formattedDateTime;
     }
     
+    public static LocalDateTime DateToLocalDateTime(Date date) {
+        
+        return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    }
     
     
 }

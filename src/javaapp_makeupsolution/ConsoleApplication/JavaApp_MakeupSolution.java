@@ -5,6 +5,7 @@
  */
 package javaapp_makeupsolution.ConsoleApplication;
 
+/* Imported files */
 import javaapp_makeupsolution.Controller.EnderecoDAO;
 import javaapp_makeupsolution.Controller.CidadeEnderecoDAO;
 import javaapp_makeupsolution.Controller.AgendaDAO;
@@ -27,7 +28,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 /**
- *
+ * 
  * @author vdsbt33
  */
 public class JavaApp_MakeupSolution {
@@ -69,7 +70,7 @@ public class JavaApp_MakeupSolution {
         }
     }
     
-    /* 
+    /*
     CLIENTES
     */
     
@@ -178,7 +179,6 @@ public class JavaApp_MakeupSolution {
                 if (ClienteDAO.exists(id)){
                     Cliente cliente = ClienteDAO.getClienteByID(id);
                     Endereco endereco = ClienteDAO.getEnderecoCliente(cliente);
-                    //ct.println("\n" + endereco.getRuaEndereco().getNomeRuaEndereco() + "\n");
 
                     String op2 = "";
                     while (!op2.equals("voltar")){

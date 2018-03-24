@@ -13,6 +13,7 @@ import javaapp_makeupsolution.Model.Cliente;
 import javaapp_makeupsolution.Controller.ClienteDAO;
 import javaapp_makeupsolution.Model.Agenda;
 import javaapp_makeupsolution.Controller.AgendaDAO;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
@@ -175,6 +176,7 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
                     System.out.println(custoAgendaSpinner.getValue());
                     Agenda agenda = new Agenda(cliente, Double.valueOf(custoAgendaSpinner.getValue().toString()), ldt);
                     AgendaDAO.Adicionar(agenda);
+                    JOptionPane.showMessageDialog(null, "Relatório de agenda adicionado com sucesso!");
                     this.setVisible(false);
                     Clientes_Listar.getSelf().setVisible(true);
                 }

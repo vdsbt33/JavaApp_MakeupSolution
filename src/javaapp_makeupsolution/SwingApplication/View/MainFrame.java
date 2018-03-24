@@ -30,12 +30,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -45,8 +48,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -67,6 +68,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(77, 23));
         jPanel1.add(jLabel2, new java.awt.GridBagConstraints());
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Agenda");
+        jLabel3.setPreferredSize(new java.awt.Dimension(77, 23));
+        jPanel1.add(jLabel3, new java.awt.GridBagConstraints());
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Produtos");
         jLabel4.setPreferredSize(new java.awt.Dimension(77, 23));
@@ -82,6 +88,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanel2.add(jButton4, new java.awt.GridBagConstraints());
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setPreferredSize(new java.awt.Dimension(77, 23));
+        jPanel2.add(jLabel5, new java.awt.GridBagConstraints());
+
         jButton6.setText("Adicionar");
         jButton6.setEnabled(false);
         jPanel2.add(jButton6, new java.awt.GridBagConstraints());
@@ -96,6 +106,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton7, new java.awt.GridBagConstraints());
+
+        jButton8.setText("Buscar");
+        jButton8.setPreferredSize(new java.awt.Dimension(77, 23));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendaBuscarBtn_onClick(evt);
+            }
+        });
+        jPanel3.add(jButton8, new java.awt.GridBagConstraints());
 
         jButton9.setText("Buscar");
         jButton9.setEnabled(false);
@@ -130,19 +149,21 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuItem5.setText("Adicionar");
         jMenuItem5.setName("AgendaAdicionarBtn"); // NOI18N
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendaAdicionarBtn_onClick(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
-        jMenuItem6.setText("Listar");
+        jMenuItem6.setText("Buscar");
         jMenuItem6.setName("AgendaListarBtn"); // NOI18N
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendaBuscarBtn_onClick(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setText("Editar");
-        jMenuItem7.setName("AgendaEditarBtn"); // NOI18N
-        jMenu4.add(jMenuItem7);
-
-        jMenuItem8.setText("Remover");
-        jMenuItem8.setName("AgendaRemoverBtn"); // NOI18N
-        jMenu4.add(jMenuItem8);
 
         jMenu1.add(jMenu4);
 
@@ -200,14 +221,20 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarClienteBtn_onClick
-        Clientes_Adicionar clientes_adicionar = Clientes_Adicionar.getSelf();
-        clientes_adicionar.setVisible(true);
+        Clientes_Adicionar.getSelf().setVisible(true);
     }//GEN-LAST:event_adicionarClienteBtn_onClick
 
     private void listarClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClienteBtn_onClick
-        Clientes_Listar clientes_listar = Clientes_Listar.getSelf();
-        clientes_listar.setVisible(true);
+        Clientes_Listar.getSelf().setVisible(true);
     }//GEN-LAST:event_listarClienteBtn_onClick
+
+    private void agendaBuscarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaBuscarBtn_onClick
+        Agenda_Listar.getSelf().setVisible(true);
+    }//GEN-LAST:event_agendaBuscarBtn_onClick
+
+    private void agendaAdicionarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaAdicionarBtn_onClick
+        adicionarClienteBtn_onClick(evt);
+    }//GEN-LAST:event_agendaAdicionarBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -248,10 +275,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -265,8 +295,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
