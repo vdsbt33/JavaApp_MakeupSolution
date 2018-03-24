@@ -55,6 +55,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
         atualizarBtn = new javax.swing.JButton();
         editarClienteBtn = new javax.swing.JButton();
         removerClienteBtn = new javax.swing.JButton();
+        agendarClienteBtn = new javax.swing.JButton();
 
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(388, 279));
@@ -112,6 +113,13 @@ public class Clientes_Listar extends javax.swing.JFrame {
             }
         });
 
+        agendarClienteBtn.setText("Agendar");
+        agendarClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendarClienteBtn_onClick(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,7 +137,8 @@ public class Clientes_Listar extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(agendarClienteBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editarClienteBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removerClienteBtn)))
@@ -150,7 +159,8 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarClienteBtn)
-                    .addComponent(removerClienteBtn))
+                    .addComponent(removerClienteBtn)
+                    .addComponent(agendarClienteBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -218,6 +228,23 @@ public class Clientes_Listar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removerClienteBtn_onClick
 
+    private void agendarClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarClienteBtn_onClick
+        if (clientesTable.getSelectedRow() >= 0){
+            Object rowData;
+            rowData = clientesTable.getModel().getValueAt(clientesTable.getSelectedRow(), 0);
+            Cliente cliente = ClienteDAO.getClienteByID((int) rowData);
+            
+            if (ClienteDAO.exists((int) rowData)){
+                    this.setVisible(false);
+                    Agenda_Adicionar.getSelf(cliente).setVisible(true);
+                    
+            } else {
+                JOptionPane.showMessageDialog(null, "O cliente selecionado não existe.");
+            }
+        }
+        
+    }//GEN-LAST:event_agendarClienteBtn_onClick
+
     /**
      * @param args the command line arguments
      */
@@ -254,6 +281,7 @@ public class Clientes_Listar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agendarClienteBtn;
     private javax.swing.JButton atualizarBtn;
     private javax.swing.JTable clientesTable;
     private javax.swing.JButton editarClienteBtn;

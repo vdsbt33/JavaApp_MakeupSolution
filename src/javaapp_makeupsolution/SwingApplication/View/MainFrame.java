@@ -29,9 +29,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -57,17 +62,45 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton2.setText("Clientes");
-        jButton2.setEnabled(false);
-        jPanel1.add(jButton2, new java.awt.GridBagConstraints());
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Clientes");
+        jLabel2.setPreferredSize(new java.awt.Dimension(77, 23));
+        jPanel1.add(jLabel2, new java.awt.GridBagConstraints());
 
-        jButton1.setText("Agenda");
-        jButton1.setEnabled(false);
-        jPanel1.add(jButton1, new java.awt.GridBagConstraints());
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Produtos");
+        jLabel4.setPreferredSize(new java.awt.Dimension(77, 23));
+        jPanel1.add(jLabel4, new java.awt.GridBagConstraints());
 
-        jButton3.setText("Produtos");
-        jButton3.setEnabled(false);
-        jPanel1.add(jButton3, new java.awt.GridBagConstraints());
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jButton4.setText("Adicionar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarClienteBtn_onClick(evt);
+            }
+        });
+        jPanel2.add(jButton4, new java.awt.GridBagConstraints());
+
+        jButton6.setText("Adicionar");
+        jButton6.setEnabled(false);
+        jPanel2.add(jButton6, new java.awt.GridBagConstraints());
+
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jButton7.setText("Buscar");
+        jButton7.setPreferredSize(new java.awt.Dimension(77, 23));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarClienteBtn_onClick(evt);
+            }
+        });
+        jPanel3.add(jButton7, new java.awt.GridBagConstraints());
+
+        jButton9.setText("Buscar");
+        jButton9.setEnabled(false);
+        jButton9.setPreferredSize(new java.awt.Dimension(77, 23));
+        jPanel3.add(jButton9, new java.awt.GridBagConstraints());
 
         jMenu1.setText("Atalhos");
 
@@ -144,23 +177,23 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,10 +245,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -233,5 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

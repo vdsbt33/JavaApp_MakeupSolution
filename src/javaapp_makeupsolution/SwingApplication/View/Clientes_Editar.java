@@ -201,8 +201,6 @@ public class Clientes_Editar extends javax.swing.JFrame {
                 error = true;
             }
         }
-        System.out.println("Teste");
-        
         
         
         if (ClienteDAO.hasEndereco(cliente)) {
@@ -211,7 +209,6 @@ public class Clientes_Editar extends javax.swing.JFrame {
                     if (!Endereco_Editar.getClienteEndereco().getRuaEndereco().getNomeRuaEndereco().isEmpty()){
                         Endereco_Editar.getClienteEndereco().setCliente(cliente);
                         try {
-                            System.out.println("P1");
                             CidadeEnderecoDAO.Atualizar(Endereco_Editar.getClienteEndereco().getCidadeEndereco());
                             BairroEnderecoDAO.Atualizar(Endereco_Editar.getClienteEndereco().getBairroEndereco());
                             RuaEnderecoDAO.Atualizar(Endereco_Editar.getClienteEndereco().getRuaEndereco());
@@ -227,7 +224,6 @@ public class Clientes_Editar extends javax.swing.JFrame {
                 }
             }
         } else {
-            System.out.println("P2");
             if(Endereco_Editar.getClienteEndereco() != null){
                 if (!Endereco_Editar.getClienteEndereco().getCidadeEndereco().getNomeCidadeEndereco().isEmpty()) {
                     if (!Endereco_Editar.getClienteEndereco().getBairroEndereco().getNomeBairroEndereco().isEmpty()){
