@@ -16,7 +16,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 
 #### Agenda
 - [X] Create
-- [ ] Read
+- [X] Read
 - [ ] Update
 - [ ] Delete
 
