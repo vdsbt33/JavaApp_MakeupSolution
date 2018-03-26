@@ -1,6 +1,6 @@
 # JavaApp_MakeupSolution
 
-Made to store customers' and providers' data. <br>
+Made to store customers' data and products buying log. <br>
 Learning Java while helping my sister out.
 
 
