@@ -5,39 +5,86 @@
  */
 package javaapp_makeupsolution.SwingApplication.View;
 
-import java.util.ArrayList;
 import java.util.List;
 import javaapp_makeupsolution.Controller.ClienteDAO;
 import javaapp_makeupsolution.Model.Cliente;
+import javaapp_makeupsolution.Model.Agenda;
 import javaapp_makeupsolution.Model.Endereco;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
  * @author vdsbt33
  */
-public class Clientes_Listar extends javax.swing.JFrame {
+public class ClienteAgenda_Editar extends javax.swing.JFrame {
 
-    private static Clientes_Listar self = null;
-    
-    private List<Cliente> clientes = null;
+    private static ClienteAgenda_Editar self = null;
+    private static Cliente cliente = null;
     
     /**
-     * Creates new form Clientes_Listar
+     * Creates new form ClienteAgenda_Editar
      */
-    private Clientes_Listar() {
+    private ClienteAgenda_Editar() {
         initComponents();
     }
     
-    public static Clientes_Listar getSelf(){
+    public static ClienteAgenda_Editar getSelf(Cliente alvo){
         if (self == null){
-            self = new Clientes_Listar();
+            self = new ClienteAgenda_Editar();
         }
+        
+        cliente = alvo;
+        
         return self;
     }
-
+    
+    public static ClienteAgenda_Editar getSelf(){
+        if (self == null){
+            self = new ClienteAgenda_Editar();
+        }
+        
+        return self;
+    }
+    
+    public void atualizarCampos(){
+        
+        if (cliente != null){
+            nomeListarTbox.setText(cliente.getNome());
+            DefaultTableModel model = (DefaultTableModel) clientesTable.getModel();
+            model.setRowCount(0);
+            
+            Object[] columnsName = { "id", "Nome", "Descricao", "Endereco" };
+            model.setColumnIdentifiers(columnsName);
+            
+            Object[] rowData = new Object[4];
+            rowData[0] = cliente.getCod();
+            rowData[1] = cliente.getNome();
+            rowData[2] = cliente.getDescricao();
+            if (ClienteDAO.hasEndereco(cliente)){
+                Endereco enderecoCliente = ClienteDAO.getEnderecoCliente(cliente);
+                rowData[3] = enderecoCliente.getCidadeEndereco().getNomeCidadeEndereco() + ", " + enderecoCliente.getBairroEndereco().getNomeBairroEndereco() + ", " + enderecoCliente.getRuaEndereco().getNomeRuaEndereco() + ", " + enderecoCliente.getNumeroEndereco();
+            }
+            model.addRow(rowData);
+            rowData[3] = "";
+            
+        }
+    }
+    
+    public void limparCampos() {
+        nomeListarTbox.setText("");
+        DefaultTableModel model = (DefaultTableModel) clientesTable.getModel();
+        model.setRowCount(0);
+    }
+    
+    public static Cliente getCliente(){
+        return cliente;
+    }
+    
+    public static void setCliente(Cliente alvo){
+        cliente = alvo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,21 +97,27 @@ public class Clientes_Listar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nomeListarTbox = new javax.swing.JTextField();
+        atualizarBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         clientesTable = new javax.swing.JTable();
-        atualizarBtn = new javax.swing.JButton();
-        editarClienteBtn = new javax.swing.JButton();
-        removerClienteBtn = new javax.swing.JButton();
-        agendarClienteBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        guardarAgendaBtn = new javax.swing.JButton();
+        cancelarAgendaBtn = new javax.swing.JButton();
 
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(388, 279));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Clientes - Buscar");
+        jLabel1.setText("Agenda - Editar");
 
         jLabel2.setText("Buscar por nome:");
+
+        atualizarBtn.setText("Buscar");
+        atualizarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarBtn_onClick(evt);
+            }
+        });
 
         clientesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,66 +142,50 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        clientesTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(clientesTable);
 
-        atualizarBtn.setText("Buscar");
-        atualizarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarBtn_onClick(evt);
-            }
-        });
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        editarClienteBtn.setText("Editar");
-        editarClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+        guardarAgendaBtn.setText("Guardar");
+        guardarAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarClienteBtn_onClick(evt);
+                guardarAgendaBtn_onClick(evt);
             }
         });
+        jPanel1.add(guardarAgendaBtn, new java.awt.GridBagConstraints());
 
-        removerClienteBtn.setText("Excluir");
-        removerClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+        cancelarAgendaBtn.setText("Cancelar");
+        cancelarAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerClienteBtn_onClick(evt);
+                cancelarAgendaBtn_onClick(evt);
             }
         });
-
-        agendarClienteBtn.setText("Agendar");
-        agendarClienteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agendarClienteBtn_onClick(evt);
-            }
-        });
+        jPanel1.add(cancelarAgendaBtn, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nomeListarTbox, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(agendarClienteBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editarClienteBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removerClienteBtn)))
+                        .addComponent(atualizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nomeListarTbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,18 +193,16 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editarClienteBtn)
-                    .addComponent(removerClienteBtn)
-                    .addComponent(agendarClienteBtn))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void atualizarLista(){
-        clientes = ClienteDAO.getClienteByName(nomeListarTbox.getText());
+    private void atualizarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBtn_onClick
+
+        List<Cliente> clientes = ClienteDAO.getClienteByName(nomeListarTbox.getText());
         DefaultTableModel model = (DefaultTableModel) clientesTable.getModel();
         model.setRowCount(0);
                 
@@ -188,64 +223,38 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 model.addRow(rowData);
                 rowData[3] = "";
             }
+            
         } else {
             clientesTable.removeAll();
         }
-    }
-    
-    private void atualizarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBtn_onClick
         
-        atualizarLista();
     }//GEN-LAST:event_atualizarBtn_onClick
 
-    private void editarClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarClienteBtn_onClick
+    private void guardarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAgendaBtn_onClick
+        
         if (clientesTable.getSelectedRow() >= 0){
             Object rowData;
             rowData = clientesTable.getModel().getValueAt(clientesTable.getSelectedRow(), 0);
-            Clientes_Editar clientes_editar = null;
-            clientes_editar = Clientes_Editar.getSelf(ClienteDAO.getClienteByID(((int) rowData)));
-            clientes_editar.setVisible(true);
-            clientes_editar.atualizarCampos();
-            this.setVisible(false);
-        }
-    }//GEN-LAST:event_editarClienteBtn_onClick
 
-    private void removerClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerClienteBtn_onClick
-        if (clientesTable.getSelectedRow() >= 0){
-            Object rowData;
-            rowData = clientesTable.getModel().getValueAt(clientesTable.getSelectedRow(), 0);
-            Cliente cliente = ClienteDAO.getClienteByID((int) rowData);
-            
-            if (ClienteDAO.exists((int) rowData)){
-                int selectedOption = JOptionPane.showConfirmDialog(null,
-                        "Tem certeza que deseja remover o cliente " + cliente.getNome() + "?", "Atenção", JOptionPane.YES_NO_OPTION);
-                if (selectedOption == JOptionPane.YES_OPTION){
-                    ClienteDAO.Remover(ClienteDAO.getClienteByID((int) rowData));
-                    atualizarLista();
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "O cliente selecionado não existe.");
-            }
-        }
-    }//GEN-LAST:event_removerClienteBtn_onClick
+            if (rowData != null){
 
-    private void agendarClienteBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarClienteBtn_onClick
-        if (clientesTable.getSelectedRow() >= 0){
-            Object rowData;
-            rowData = clientesTable.getModel().getValueAt(clientesTable.getSelectedRow(), 0);
-            Cliente cliente = ClienteDAO.getClienteByID((int) rowData);
-            
-            if (ClienteDAO.exists((int) rowData)){
-                    this.setVisible(false);
-                    Agenda_Adicionar.getSelf(cliente).setVisible(true);
-                    
+                cliente = ClienteDAO.getClienteByID((int) rowData);
+                
+                this.setVisible(false);
+                Agenda_Editar.getSelf().setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "O cliente selecionado não existe.");
+                JOptionPane.showMessageDialog(null, "É necessário selecionar um cliente.");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário selecionar um cliente.");
         }
         
-    }//GEN-LAST:event_agendarClienteBtn_onClick
+    }//GEN-LAST:event_guardarAgendaBtn_onClick
+
+    private void cancelarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAgendaBtn_onClick
+        this.setVisible(false);
+        Agenda_Listar.getSelf().setVisible(true);
+    }//GEN-LAST:event_cancelarAgendaBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -264,33 +273,33 @@ public class Clientes_Listar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Clientes_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAgenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Clientes_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAgenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Clientes_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAgenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Clientes_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAgenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Clientes_Listar().setVisible(true);
+                new ClienteAgenda_Editar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agendarClienteBtn;
     private javax.swing.JButton atualizarBtn;
+    private javax.swing.JButton cancelarAgendaBtn;
     private javax.swing.JTable clientesTable;
-    private javax.swing.JButton editarClienteBtn;
+    private javax.swing.JButton guardarAgendaBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeListarTbox;
-    private javax.swing.JButton removerClienteBtn;
     // End of variables declaration//GEN-END:variables
 }

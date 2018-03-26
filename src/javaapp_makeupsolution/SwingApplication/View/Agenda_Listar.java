@@ -54,6 +54,10 @@ public class Agenda_Listar extends javax.swing.JFrame {
         dataFimDP = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         agendaTable = new javax.swing.JTable();
+        editarAgendaBtn = new javax.swing.JButton();
+        excluirAgendaBtn = new javax.swing.JButton();
+
+        setAlwaysOnTop(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,6 +113,20 @@ public class Agenda_Listar extends javax.swing.JFrame {
             agendaTable.getColumnModel().getColumn(2).setPreferredWidth(50);
         }
 
+        editarAgendaBtn.setText("Editar");
+        editarAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarAgendaBtn_onClick(evt);
+            }
+        });
+
+        excluirAgendaBtn.setText("Excluir");
+        excluirAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirAgendaBtn_onClick(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,6 +134,7 @@ public class Agenda_Listar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,7 +146,11 @@ public class Agenda_Listar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(atualizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(editarAgendaBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(excluirAgendaBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -144,14 +167,17 @@ public class Agenda_Listar extends javax.swing.JFrame {
                     .addComponent(atualizarBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editarAgendaBtn)
+                    .addComponent(excluirAgendaBtn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void atualizarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBtn_onClick
-        
+    public void atualizarLista(){
         try {
             agendas = AgendaDAO.getListAgendaBetween(AgendaDAO.DateToLocalDateTime(dataInicioDP.getDate()), AgendaDAO.DateToLocalDateTime(dataFimDP.getDate()));
         } catch (Exception ex) {
@@ -182,8 +208,44 @@ public class Agenda_Listar extends javax.swing.JFrame {
         } else {
             agendaTable.removeAll();
         }
+    }
+    
+    private void atualizarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBtn_onClick
         
+        atualizarLista();
     }//GEN-LAST:event_atualizarBtn_onClick
+
+    private void excluirAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAgendaBtn_onClick
+        if (agendaTable.getSelectedRow() >= 0){
+            Object rowData;
+            rowData = agendaTable.getModel().getValueAt(agendaTable.getSelectedRow(), 0);
+            
+            if (AgendaDAO.exists((int) rowData)){
+                int selectedOption = JOptionPane.showConfirmDialog(null,
+                        "Tem certeza que deseja o relatório selecionado?", "Atenção", JOptionPane.YES_NO_OPTION);
+                if (selectedOption == JOptionPane.YES_OPTION){
+                    AgendaDAO.Remover(AgendaDAO.ListarPorId((int) rowData).get(0));
+                    atualizarLista();
+                    JOptionPane.showMessageDialog(null, "Relatório removido com sucesso.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "O relatório selecionado não existe.");
+            }
+        }
+    }//GEN-LAST:event_excluirAgendaBtn_onClick
+
+    private void editarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAgendaBtn_onClick
+        if (agendaTable.getSelectedRow() >= 0){
+            Object rowData;
+            rowData = agendaTable.getModel().getValueAt(agendaTable.getSelectedRow(), 0);
+            Agenda_Editar agenda_editar = null;
+            agenda_editar = Agenda_Editar.getSelf(AgendaDAO.ListarPorId((int) rowData).get(0));
+            agenda_editar.setVisible(true);
+            agenda_editar.atualizarCampos();
+            this.setVisible(false);
+            
+        }
+    }//GEN-LAST:event_editarAgendaBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -225,6 +287,8 @@ public class Agenda_Listar extends javax.swing.JFrame {
     private javax.swing.JButton atualizarBtn;
     private org.jdesktop.swingx.JXDatePicker dataFimDP;
     private org.jdesktop.swingx.JXDatePicker dataInicioDP;
+    private javax.swing.JButton editarAgendaBtn;
+    private javax.swing.JButton excluirAgendaBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

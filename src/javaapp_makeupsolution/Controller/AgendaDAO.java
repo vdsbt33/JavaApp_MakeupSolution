@@ -263,5 +263,8 @@ public class AgendaDAO {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
     
-    
+    public static Date LocalDateTimeToDate(LocalDateTime ldt){
+        
+        return Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+    }
 }

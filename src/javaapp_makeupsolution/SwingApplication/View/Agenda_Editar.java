@@ -9,30 +9,26 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import javaapp_makeupsolution.Model.Cliente;
-import javaapp_makeupsolution.Controller.ClienteDAO;
-import javaapp_makeupsolution.Model.Agenda;
 import javaapp_makeupsolution.Controller.AgendaDAO;
+import javaapp_makeupsolution.Model.Agenda;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-
 
 /**
  *
  * @author vdsbt33
  */
-public class Agenda_Adicionar extends javax.swing.JFrame {
-    private static Agenda_Adicionar self = null;
-    
-    private static Cliente cliente = null;
+public class Agenda_Editar extends javax.swing.JFrame {
+
+    private static Agenda_Editar self = null;
+    private static Agenda agenda = null;
     
     /**
-     * Creates new form Agenda_Adicionar
+     * Creates new form Agenda_Editar
      */
-    private Agenda_Adicionar() {
+    private Agenda_Editar() {
         initComponents();
         
         horaAgendaSpinner.setModel(new SpinnerDateModel());
@@ -43,16 +39,30 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
         JSpinner.NumberEditor editorNumber = new JSpinner.NumberEditor(custoAgendaSpinner);
         custoAgendaSpinner.setEditor(editorNumber);
         
-        
-        //horaAgendaSpinner.setValue(new Date());
     }
-
-    public static Agenda_Adicionar getSelf(Cliente alvo){
+    
+    public static Agenda_Editar getSelf(Agenda alvo){
         if (self == null){
-            self = new Agenda_Adicionar();
+            self = new Agenda_Editar();
         }
-        cliente = alvo;
+        agenda = alvo;
+        ClienteAgenda_Editar.setCliente(agenda.getCodCliente());
+        
         return self;
+    }
+    
+    public static Agenda_Editar getSelf(){
+        if (self == null){
+            self = new Agenda_Editar();
+        }
+        
+        return self;
+    }
+    
+    public void atualizarCampos() {
+        dataAgendaDP.setDate(AgendaDAO.LocalDateTimeToDate(agenda.getDataHoraAlvoAgenda()));
+        horaAgendaSpinner.setValue(AgendaDAO.LocalDateTimeToDate(agenda.getDataHoraAlvoAgenda()));
+        custoAgendaSpinner.setValue(agenda.getValorAgenda());
     }
     
     /**
@@ -65,27 +75,32 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        dataAgendaDP = new org.jdesktop.swingx.JXDatePicker();
+        jLabel4 = new javax.swing.JLabel();
+        horaAgendaSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         custoAgendaSpinner = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         guardarAgendaBtn = new javax.swing.JButton();
         cancelarAgendaBtn = new javax.swing.JButton();
-        dataAgendaDP = new org.jdesktop.swingx.JXDatePicker();
-        horaAgendaSpinner = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        mudarClienteAgendaBtn = new javax.swing.JButton();
 
         setAlwaysOnTop(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Agendamento");
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Custo (R$):");
+        jLabel1.setText("Agenda - Editar");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Data:");
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Hora:");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Custo (R$):");
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -105,40 +120,50 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
         });
         jPanel1.add(cancelarAgendaBtn, new java.awt.GridBagConstraints());
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Hora:");
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        mudarClienteAgendaBtn.setText("Mudar Cliente");
+        mudarClienteAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudarClienteAgendaBtn_onClick(evt);
+            }
+        });
+        jPanel2.add(mudarClienteAgendaBtn, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(custoAgendaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dataAgendaDP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(horaAgendaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 101, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(custoAgendaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 156, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(horaAgendaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 107, Short.MAX_VALUE))
+                            .addComponent(dataAgendaDP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(dataAgendaDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,6 +176,8 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(custoAgendaSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -158,12 +185,9 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAgendaBtn_onClick
-        this.setVisible(false);
-        Clientes_Listar.getSelf().setVisible(true);
-    }//GEN-LAST:event_cancelarAgendaBtn_onClick
-
     private void guardarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAgendaBtn_onClick
+        System.out.println("id: " + agenda.getCodAgenda());
+        
         if (dataAgendaDP.getDate() != null){
             if (horaAgendaSpinner.getValue() != null){
                 if (Double.valueOf(custoAgendaSpinner.getValue().toString()) >= 0){
@@ -174,18 +198,38 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
                     ldt = ldt.plusMinutes(time.getMinute());
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     ldt.format(formatter);
-                    System.out.println(AgendaDAO.LocalDateTimeToString(ldt));
-                    System.out.println(custoAgendaSpinner.getValue());
-                    Agenda agenda = new Agenda(cliente, Double.valueOf(custoAgendaSpinner.getValue().toString()), ldt);
-                    AgendaDAO.Adicionar(agenda);
-                    JOptionPane.showMessageDialog(null, "Relatório de agenda adicionado com sucesso!");
+                    
+                    agenda.setCodCliente(ClienteAgenda_Editar.getCliente());
+                    agenda.setDataHoraAlvoAgenda(ldt);
+                    agenda.setValorAgenda(Double.valueOf(custoAgendaSpinner.getValue().toString()));
+                    
+                    AgendaDAO.Atualizar(agenda);
+                    JOptionPane.showMessageDialog(null, "Relatório de agenda atualizado com sucesso!");
+                    
                     this.setVisible(false);
-                    Clientes_Listar.getSelf().setVisible(true);
+                    Agenda_Listar agendaListar = Agenda_Listar.getSelf();
+                    agendaListar.atualizarLista();
+                    agendaListar.setVisible(true);
+                    
                 }
             }
         }
         
     }//GEN-LAST:event_guardarAgendaBtn_onClick
+
+    private void cancelarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAgendaBtn_onClick
+        this.setVisible(false);
+        Agenda_Listar.getSelf().setVisible(true);
+    }//GEN-LAST:event_cancelarAgendaBtn_onClick
+
+    private void mudarClienteAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarClienteAgendaBtn_onClick
+        ClienteAgenda_Editar clienteAgenda = ClienteAgenda_Editar.getSelf(ClienteAgenda_Editar.getCliente());
+        
+        clienteAgenda.atualizarCampos();
+        
+        this.setVisible(false);
+        clienteAgenda.setVisible(true);
+    }//GEN-LAST:event_mudarClienteAgendaBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -204,22 +248,21 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agenda_Adicionar().setVisible(true);
+                new Agenda_Editar().setVisible(true);
             }
-            
         });
     }
 
@@ -234,5 +277,7 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton mudarClienteAgendaBtn;
     // End of variables declaration//GEN-END:variables
 }

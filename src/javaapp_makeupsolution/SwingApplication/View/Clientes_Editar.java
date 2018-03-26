@@ -79,6 +79,8 @@ public class Clientes_Editar extends javax.swing.JFrame {
         guardarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
 
+        setAlwaysOnTop(true);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Clientes - Editar");
@@ -169,20 +171,13 @@ public class Clientes_Editar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarEnderecoBtnAdicionarEnderecoBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarEnderecoBtnAdicionarEnderecoBtn
-        Endereco_Editar endereco = null;
-         /*
-        Find a way here not to reset all fields even when "Save" button is clicked
-        
-        */
-        
-        endereco = Endereco_Editar.getSelf(cliente);
-        
+        Endereco_Editar endereco = Endereco_Editar.getSelf(cliente);
         
         endereco.atualizarCampos();
         
-        
         this.setVisible(false);
-            endereco.setVisible(true);
+        endereco.setVisible(true);
+        
     }//GEN-LAST:event_adicionarEnderecoBtnAdicionarEnderecoBtn
 
     private void guardarBtnGuardarBtn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnGuardarBtn
@@ -249,8 +244,11 @@ public class Clientes_Editar extends javax.swing.JFrame {
         }
         
         if (error == false){
+            
             this.setVisible(false);
-            Clientes_Listar.getSelf().setVisible(true);
+            Clientes_Listar clientesListar = Clientes_Listar.getSelf();
+            clientesListar.atualizarLista();
+            clientesListar.setVisible(true);
         }
 
     }//GEN-LAST:event_guardarBtnGuardarBtn
