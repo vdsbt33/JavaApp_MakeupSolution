@@ -4,7 +4,7 @@ Made to store customers' data and products buying log. <br>
 Learning Java while helping my sister out.
 
 
-If you want to try it out, don't forget to create the database using the [.sql file](/sql/sqlSchema_MakeupSolution.sql).
+If you want to try it out, don't forget to create the database using the [.sql file](/mysql_query/mySqlSchema_MakeupSolution.sql).
 
 ## Progress
 ### Swing
