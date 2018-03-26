@@ -17,8 +17,8 @@ If you want to try it out, don't forget to create the database using the [.sql f
 #### Agenda
 - [X] Create
 - [X] Read
-- [ ] Update
-- [ ] Delete
+- [X] Update
+- [X] Delete
 
 #### Produto
 - [ ] Create
