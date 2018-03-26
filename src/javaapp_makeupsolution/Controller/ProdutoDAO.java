@@ -125,6 +125,14 @@ public class ProdutoDAO {
         return ProdutoDAO.getListProdutos(query).get(0);
     }
     
+    
+    public static List<Produto> getListProdutoBetween(LocalDateTime dataInicio, LocalDateTime dataFim) throws Exception{
+        String query =  "SELECT codProduto, nomeProduto, precoProduto, quantidadeProduto, dataProduto FROM Produto \n" +
+                        "WHERE dataProduto BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim) + "';";
+
+        return ProdutoDAO.getListProdutos(query);
+    }
+    
     public static List<Produto> getListProdutos(String query){
         List<Produto> produtos = new ArrayList<Produto>();
         

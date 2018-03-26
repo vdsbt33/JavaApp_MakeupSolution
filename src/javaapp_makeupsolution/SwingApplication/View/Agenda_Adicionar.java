@@ -44,7 +44,7 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
         custoAgendaSpinner.setEditor(editorNumber);
         
         
-        //horaAgendaSpinner.setValue(new Date());
+        dataAgendaDP.setDate(new Date());
     }
 
     public static Agenda_Adicionar getSelf(Cliente alvo){
@@ -158,6 +158,12 @@ public class Agenda_Adicionar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void limparCampos(){
+        dataAgendaDP.setDate(new Date());
+        horaAgendaSpinner.setValue(new Date());
+        custoAgendaSpinner.setValue(0);
+    }
+    
     private void cancelarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAgendaBtn_onClick
         this.setVisible(false);
         Clientes_Listar.getSelf().setVisible(true);

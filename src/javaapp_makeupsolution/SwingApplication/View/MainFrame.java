@@ -34,12 +34,14 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
+        space1 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        space2 = new javax.swing.JLabel();
+        buscarProdutoBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -51,11 +53,10 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(453, 276));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,18 +89,25 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanel2.add(jButton4, new java.awt.GridBagConstraints());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setPreferredSize(new java.awt.Dimension(77, 23));
-        jPanel2.add(jLabel5, new java.awt.GridBagConstraints());
+        jButton5.setText("Adicionar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarClienteBtn_onClick(evt);
+            }
+        });
+        jPanel2.add(jButton5, new java.awt.GridBagConstraints());
 
         jButton6.setText("Adicionar");
-        jButton6.setEnabled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarProdutoBtn_onClick(evt);
+            }
+        });
         jPanel2.add(jButton6, new java.awt.GridBagConstraints());
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jButton7.setText("Buscar");
-        jButton7.setPreferredSize(new java.awt.Dimension(77, 23));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarClienteBtn_onClick(evt);
@@ -107,8 +115,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanel3.add(jButton7, new java.awt.GridBagConstraints());
 
+        space1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        space1.setPreferredSize(new java.awt.Dimension(12, 23));
+        jPanel3.add(space1, new java.awt.GridBagConstraints());
+
         jButton8.setText("Buscar");
-        jButton8.setPreferredSize(new java.awt.Dimension(77, 23));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agendaBuscarBtn_onClick(evt);
@@ -116,10 +127,17 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanel3.add(jButton8, new java.awt.GridBagConstraints());
 
-        jButton9.setText("Buscar");
-        jButton9.setEnabled(false);
-        jButton9.setPreferredSize(new java.awt.Dimension(77, 23));
-        jPanel3.add(jButton9, new java.awt.GridBagConstraints());
+        space2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        space2.setPreferredSize(new java.awt.Dimension(12, 23));
+        jPanel3.add(space2, new java.awt.GridBagConstraints());
+
+        buscarProdutoBtn.setText("Buscar");
+        buscarProdutoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProdutoBtn_onClick(evt);
+            }
+        });
+        jPanel3.add(buscarProdutoBtn, new java.awt.GridBagConstraints());
 
         jMenu1.setText("Atalhos");
 
@@ -151,7 +169,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem5.setName("AgendaAdicionarBtn"); // NOI18N
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agendaAdicionarBtn_onClick(evt);
+                listarClienteBtn_onClick(evt);
             }
         });
         jMenu4.add(jMenuItem5);
@@ -171,19 +189,21 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuItem9.setText("Adicionar");
         jMenuItem9.setName("ProdutoAdicionarBtn"); // NOI18N
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarProdutoBtn_onClick(evt);
+            }
+        });
         jMenu5.add(jMenuItem9);
 
-        jMenuItem10.setText("Listar");
+        jMenuItem10.setText("Buscar");
         jMenuItem10.setName("ProdutoListarBtn"); // NOI18N
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProdutoBtn_onClick(evt);
+            }
+        });
         jMenu5.add(jMenuItem10);
-
-        jMenuItem11.setText("Editar");
-        jMenuItem11.setName("ProdutoEditarBtn"); // NOI18N
-        jMenu5.add(jMenuItem11);
-
-        jMenuItem12.setText("Remover");
-        jMenuItem12.setName("ProdutoRemoverBtn"); // NOI18N
-        jMenu5.add(jMenuItem12);
 
         jMenu1.add(jMenu5);
 
@@ -232,9 +252,13 @@ public class MainFrame extends javax.swing.JFrame {
         Agenda_Listar.getSelf().setVisible(true);
     }//GEN-LAST:event_agendaBuscarBtn_onClick
 
-    private void agendaAdicionarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaAdicionarBtn_onClick
-        adicionarClienteBtn_onClick(evt);
-    }//GEN-LAST:event_agendaAdicionarBtn_onClick
+    private void adicionarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProdutoBtn_onClick
+        Produtos_Adicionar.getSelf().setVisible(true);
+    }//GEN-LAST:event_adicionarProdutoBtn_onClick
+
+    private void buscarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProdutoBtn_onClick
+        Produtos_Listar.getSelf().setVisible(true);
+    }//GEN-LAST:event_buscarProdutoBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -272,16 +296,16 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarProdutoBtn;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -290,8 +314,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -299,5 +321,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel space1;
+    private javax.swing.JLabel space2;
     // End of variables declaration//GEN-END:variables
 }

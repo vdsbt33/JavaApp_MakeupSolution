@@ -238,7 +238,9 @@ public class Clientes_Listar extends javax.swing.JFrame {
             
             if (ClienteDAO.exists((int) rowData)){
                     this.setVisible(false);
-                    Agenda_Adicionar.getSelf(cliente).setVisible(true);
+                    Agenda_Adicionar agendaAdicionar = Agenda_Adicionar.getSelf(cliente);
+                    agendaAdicionar.limparCampos();
+                    agendaAdicionar.setVisible(true);
                     
             } else {
                 JOptionPane.showMessageDialog(null, "O cliente selecionado não existe.");

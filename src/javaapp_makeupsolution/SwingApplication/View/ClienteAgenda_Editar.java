@@ -253,7 +253,7 @@ public class ClienteAgenda_Editar extends javax.swing.JFrame {
 
     private void cancelarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAgendaBtn_onClick
         this.setVisible(false);
-        Agenda_Listar.getSelf().setVisible(true);
+        Agenda_Editar.getSelf().setVisible(true);
     }//GEN-LAST:event_cancelarAgendaBtn_onClick
 
     /**

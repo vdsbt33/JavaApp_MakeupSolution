@@ -9,7 +9,6 @@ import javaapp_makeupsolution.Model.Agenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -191,7 +190,7 @@ public class AgendaDAO {
         return agenda;
     }
     
-    public static List<Agenda> getListAgendaBetween(LocalDateTime dataInicio, LocalDateTime dataFim) throws SQLException{
+    public static List<Agenda> getListAgendaBetween(LocalDateTime dataInicio, LocalDateTime dataFim) throws Exception{
         String query =  "SELECT age.codAgenda, age.codCliente, age.valorAgenda, age.dataHoraRegistradoAgenda, age.dataHoraAlvoAgenda\n" +
                         "FROM Agenda age\n" +
                         "LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente\n" +

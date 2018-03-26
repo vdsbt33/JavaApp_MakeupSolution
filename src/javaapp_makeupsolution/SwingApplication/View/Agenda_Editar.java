@@ -39,6 +39,7 @@ public class Agenda_Editar extends javax.swing.JFrame {
         JSpinner.NumberEditor editorNumber = new JSpinner.NumberEditor(custoAgendaSpinner);
         custoAgendaSpinner.setEditor(editorNumber);
         
+        dataAgendaDP.setDate(new Date());
     }
     
     public static Agenda_Editar getSelf(Agenda alvo){
@@ -63,6 +64,7 @@ public class Agenda_Editar extends javax.swing.JFrame {
         dataAgendaDP.setDate(AgendaDAO.LocalDateTimeToDate(agenda.getDataHoraAlvoAgenda()));
         horaAgendaSpinner.setValue(AgendaDAO.LocalDateTimeToDate(agenda.getDataHoraAlvoAgenda()));
         custoAgendaSpinner.setValue(agenda.getValorAgenda());
+        
     }
     
     /**

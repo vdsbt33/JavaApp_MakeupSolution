@@ -6,11 +6,9 @@
 package javaapp_makeupsolution.SwingApplication.View;
 
 import java.util.List;
-import java.util.ArrayList;
-import javaapp_makeupsolution.Model.Agenda;
-import javaapp_makeupsolution.Model.Cliente;
 import javaapp_makeupsolution.Controller.AgendaDAO;
-import javaapp_makeupsolution.Controller.ClienteDAO;
+import javaapp_makeupsolution.Controller.ProdutoDAO;
+import javaapp_makeupsolution.Model.Produto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,25 +16,25 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vdsbt33
  */
-public class Agenda_Listar extends javax.swing.JFrame {
+public class Produtos_Listar extends javax.swing.JFrame {
 
-    public static Agenda_Listar self = null;
-    private List<Agenda> agendas = null;
+    private static Produtos_Listar self = null;
+    private static List<Produto> produtos = null;
     
     /**
-     * Creates new form Agenda_Listar
+     * Creates new form Produtos_Buscar
      */
-    private Agenda_Listar() {
+    private Produtos_Listar() {
         initComponents();
     }
     
-    public static Agenda_Listar getSelf(){
+    public static Produtos_Listar getSelf(){
         if (self == null){
-            self = new Agenda_Listar();
+            self = new Produtos_Listar();
         }
         return self;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,23 +46,26 @@ public class Agenda_Listar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        atualizarBtn = new javax.swing.JButton();
         dataInicioDP = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
         dataFimDP = new org.jdesktop.swingx.JXDatePicker();
+        atualizarBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        agendaTable = new javax.swing.JTable();
-        editarAgendaBtn = new javax.swing.JButton();
-        excluirAgendaBtn = new javax.swing.JButton();
+        produtoTable = new javax.swing.JTable();
+        editarProdutoBtn = new javax.swing.JButton();
+        excluirProdutoBtn = new javax.swing.JButton();
 
         setAlwaysOnTop(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Agenda - Buscar");
+        jLabel1.setText("Produtos - Buscar");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Data inicial:");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Data final:");
 
         atualizarBtn.setText("Buscar");
         atualizarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -73,10 +74,7 @@ public class Agenda_Listar extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Data final:");
-
-        agendaTable.setModel(new javax.swing.table.DefaultTableModel(
+        produtoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -84,7 +82,7 @@ public class Agenda_Listar extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "cod", "Cliente", "Preço", "Data Agendada", "Data Criação"
+                "cod", "Nome", "Preço", "Quantidade", "Data Compra"
             }
         ) {
             Class[] types = new Class [] {
@@ -102,27 +100,23 @@ public class Agenda_Listar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        agendaTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(agendaTable);
-        if (agendaTable.getColumnModel().getColumnCount() > 0) {
-            agendaTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-            agendaTable.getColumnModel().getColumn(1).setMinWidth(100);
-            agendaTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-            agendaTable.getColumnModel().getColumn(2).setMinWidth(50);
-            agendaTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jScrollPane1.setViewportView(produtoTable);
+        if (produtoTable.getColumnModel().getColumnCount() > 0) {
+            produtoTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+            produtoTable.getColumnModel().getColumn(3).setPreferredWidth(50);
         }
 
-        editarAgendaBtn.setText("Editar");
-        editarAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
+        editarProdutoBtn.setText("Editar");
+        editarProdutoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarAgendaBtn_onClick(evt);
+                editarProdutoBtn_onClick(evt);
             }
         });
 
-        excluirAgendaBtn.setText("Excluir");
-        excluirAgendaBtn.addActionListener(new java.awt.event.ActionListener() {
+        excluirProdutoBtn.setText("Excluir");
+        excluirProdutoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirAgendaBtn_onClick(evt);
+                excluirProdutoBtn_onClick(evt);
             }
         });
 
@@ -147,9 +141,9 @@ public class Agenda_Listar extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(editarAgendaBtn)
+                        .addComponent(editarProdutoBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(excluirAgendaBtn)))
+                        .addComponent(excluirProdutoBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,62 +162,77 @@ public class Agenda_Listar extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editarAgendaBtn)
-                    .addComponent(excluirAgendaBtn))
+                    .addComponent(editarProdutoBtn)
+                    .addComponent(excluirProdutoBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public void atualizarLista(){
         try {
-            agendas = AgendaDAO.getListAgendaBetween(AgendaDAO.DateToLocalDateTime(dataInicioDP.getDate()), AgendaDAO.DateToLocalDateTime(dataFimDP.getDate()));
+            produtos = ProdutoDAO.getListProdutoBetween(AgendaDAO.DateToLocalDateTime(dataInicioDP.getDate()), AgendaDAO.DateToLocalDateTime(dataFimDP.getDate()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         
-        DefaultTableModel model = (DefaultTableModel) agendaTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) produtoTable.getModel();
         model.setRowCount(0);
 
-        if (!agendas.isEmpty() && dataInicioDP.getDate() != null){
+        if (!produtos.isEmpty() && dataInicioDP.getDate() != null){
             if (dataFimDP.getDate() != null && dataInicioDP.getDate().before(dataFimDP.getDate())){
                 
-                Object[] columnsName = { "cod", "Cliente", "Preço", "Data Agendada", "Data Criação" };
+                Object[] columnsName = { "cod", "Nome", "Preço", "Quantidade", "Data Compra" };
                 model.setColumnIdentifiers(columnsName);
                 
                 Object[] rowData = new Object[5];
-                for (int i = 0; i < agendas.size(); i++){
-                    rowData[0] = agendas.get(i).getCodAgenda();
-                    rowData[1] = agendas.get(i).getCodCliente().getNome();
-                    rowData[2] = agendas.get(i).getValorAgenda();
-                    rowData[3] = AgendaDAO.LocalDateTimeToString(agendas.get(i).getDataHoraAlvoAgenda());
-                    rowData[4] = AgendaDAO.LocalDateTimeToString(agendas.get(i).getDataHoraRegistradoAgenda());
+                for (int i = 0; i < produtos.size(); i++){
+                    rowData[0] = produtos.get(i).getCodProduto();
+                    rowData[1] = produtos.get(i).getNomeProduto();
+                    rowData[2] = produtos.get(i).getPrecoProduto();
+                    rowData[3] = produtos.get(i).getQuantidadeProduto();
+                    rowData[4] = AgendaDAO.LocalDateTimeToString(produtos.get(i).getDataProduto());
                     model.addRow(rowData);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Verifique se as datas não foram inseridas invertidas.");
             }
         } else {
-            agendaTable.removeAll();
+            produtoTable.removeAll();
         }
     }
     
     private void atualizarBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarBtn_onClick
-        
+
         atualizarLista();
     }//GEN-LAST:event_atualizarBtn_onClick
 
-    private void excluirAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirAgendaBtn_onClick
-        if (agendaTable.getSelectedRow() >= 0){
+    private void editarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarProdutoBtn_onClick
+        /*
+        if (produtoTable.getSelectedRow() >= 0){
             Object rowData;
-            rowData = agendaTable.getModel().getValueAt(agendaTable.getSelectedRow(), 0);
-            
-            if (AgendaDAO.exists((int) rowData)){
+            rowData = produtoTable.getModel().getValueAt(produtoTable.getSelectedRow(), 0);
+            Agenda_Editar agenda_editar = null;
+            agenda_editar = Agenda_Editar.getSelf(AgendaDAO.ListarPorId((int) rowData).get(0));
+            agenda_editar.setVisible(true);
+            agenda_editar.atualizarCampos();
+            this.setVisible(false);
+
+        }
+        */
+    }//GEN-LAST:event_editarProdutoBtn_onClick
+
+    private void excluirProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirProdutoBtn_onClick
+        if (produtoTable.getSelectedRow() >= 0){
+            Object rowData;
+            rowData = produtoTable.getModel().getValueAt(produtoTable.getSelectedRow(), 0);
+
+            if (ProdutoDAO.exists((int) rowData)){
                 int selectedOption = JOptionPane.showConfirmDialog(null,
-                        "Tem certeza que deseja o relatório selecionado?", "Atenção", JOptionPane.YES_NO_OPTION);
+                    "Tem certeza que deseja o relatório selecionado?", "Atenção", JOptionPane.YES_NO_OPTION);
                 if (selectedOption == JOptionPane.YES_OPTION){
-                    AgendaDAO.Remover(AgendaDAO.ListarPorId((int) rowData).get(0));
+                    ProdutoDAO.Remover(ProdutoDAO.getProdutoByID((int) rowData));
                     atualizarLista();
                     JOptionPane.showMessageDialog(null, "Relatório removido com sucesso.");
                 }
@@ -231,20 +240,7 @@ public class Agenda_Listar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "O relatório selecionado não existe.");
             }
         }
-    }//GEN-LAST:event_excluirAgendaBtn_onClick
-
-    private void editarAgendaBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAgendaBtn_onClick
-        if (agendaTable.getSelectedRow() >= 0){
-            Object rowData;
-            rowData = agendaTable.getModel().getValueAt(agendaTable.getSelectedRow(), 0);
-            Agenda_Editar agenda_editar = null;
-            agenda_editar = Agenda_Editar.getSelf(AgendaDAO.ListarPorId((int) rowData).get(0));
-            agenda_editar.setVisible(true);
-            agenda_editar.atualizarCampos();
-            this.setVisible(false);
-            
-        }
-    }//GEN-LAST:event_editarAgendaBtn_onClick
+    }//GEN-LAST:event_excluirProdutoBtn_onClick
 
     /**
      * @param args the command line arguments
@@ -263,34 +259,35 @@ public class Agenda_Listar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agenda_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agenda_Listar().setVisible(true);
+                new Produtos_Listar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable agendaTable;
     private javax.swing.JButton atualizarBtn;
     private org.jdesktop.swingx.JXDatePicker dataFimDP;
     private org.jdesktop.swingx.JXDatePicker dataInicioDP;
-    private javax.swing.JButton editarAgendaBtn;
-    private javax.swing.JButton excluirAgendaBtn;
+    private javax.swing.JButton editarProdutoBtn;
+    private javax.swing.JButton excluirProdutoBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable produtoTable;
     // End of variables declaration//GEN-END:variables
 }
