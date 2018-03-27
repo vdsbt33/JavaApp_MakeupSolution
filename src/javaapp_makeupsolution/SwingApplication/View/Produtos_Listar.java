@@ -209,18 +209,16 @@ public class Produtos_Listar extends javax.swing.JFrame {
     }//GEN-LAST:event_atualizarBtn_onClick
 
     private void editarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarProdutoBtn_onClick
-        /*
         if (produtoTable.getSelectedRow() >= 0){
             Object rowData;
             rowData = produtoTable.getModel().getValueAt(produtoTable.getSelectedRow(), 0);
-            Agenda_Editar agenda_editar = null;
-            agenda_editar = Agenda_Editar.getSelf(AgendaDAO.ListarPorId((int) rowData).get(0));
-            agenda_editar.setVisible(true);
-            agenda_editar.atualizarCampos();
+            Produtos_Editar produtos_editar = null;
+            produtos_editar = Produtos_Editar.getSelf(ProdutoDAO.getProdutoByID((int) rowData));
+            produtos_editar.setVisible(true);
+            produtos_editar.atualizarCampos();
             this.setVisible(false);
 
         }
-        */
     }//GEN-LAST:event_editarProdutoBtn_onClick
 
     private void excluirProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirProdutoBtn_onClick

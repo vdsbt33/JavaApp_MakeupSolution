@@ -194,7 +194,7 @@ public class AgendaDAO {
         String query =  "SELECT age.codAgenda, age.codCliente, age.valorAgenda, age.dataHoraRegistradoAgenda, age.dataHoraAlvoAgenda\n" +
                         "FROM Agenda age\n" +
                         "LEFT JOIN Cliente cli ON cli.codCliente = age.codCliente\n" +
-                        "WHERE age.dataHoraAlvoAgenda BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim) + "';";
+                        "WHERE age.dataHoraAlvoAgenda BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim.plusMinutes(1439)) + "';";
 
         
         return AgendaDAO.getListAgenda(query);

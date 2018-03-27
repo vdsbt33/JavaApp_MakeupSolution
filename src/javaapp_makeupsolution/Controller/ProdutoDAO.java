@@ -128,8 +128,7 @@ public class ProdutoDAO {
     
     public static List<Produto> getListProdutoBetween(LocalDateTime dataInicio, LocalDateTime dataFim) throws Exception{
         String query =  "SELECT codProduto, nomeProduto, precoProduto, quantidadeProduto, dataProduto FROM Produto \n" +
-                        "WHERE dataProduto BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim) + "';";
-
+                        "WHERE dataProduto BETWEEN '" + AgendaDAO.LocalDateTimeToString(dataInicio) + "' AND '" + AgendaDAO.LocalDateTimeToString(dataFim.plusMinutes(1439)) + "';";
         return ProdutoDAO.getListProdutos(query);
     }
     

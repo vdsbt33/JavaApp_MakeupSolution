@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javaapp_makeupsolution.Controller.AgendaDAO;
 import javaapp_makeupsolution.Controller.ProdutoDAO;
 import javaapp_makeupsolution.Model.Produto;
 import javax.swing.JOptionPane;
@@ -20,14 +21,15 @@ import javax.swing.SpinnerNumberModel;
  *
  * @author vdsbt33
  */
-public class Produtos_Adicionar extends javax.swing.JFrame {
+public class Produtos_Editar extends javax.swing.JFrame {
 
-    private static Produtos_Adicionar self = null;
+    private static Produtos_Editar self = null;
+    private static Produto produto = null;
     
     /**
-     * Creates new form Produtos_Adicionar
+     * Creates new form Produtos_Editar
      */
-    private Produtos_Adicionar() {
+    private Produtos_Editar() {
         initComponents();
         
         horaProdutoSpinner.setModel(new SpinnerDateModel());
@@ -37,14 +39,14 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
         custoProdutoSpinner.setModel(new SpinnerNumberModel(0.0, -10000.0, 10000.0, 0.1));
         JSpinner.NumberEditor editorNumber = new JSpinner.NumberEditor(custoProdutoSpinner);
         custoProdutoSpinner.setEditor(editorNumber);
-        
-        dataProdutoDP.setDate(new Date());
     }
     
-    public static Produtos_Adicionar getSelf(){
+    public static Produtos_Editar getSelf(Produto alvo){
         if (self == null){
-            self = new Produtos_Adicionar();
+            self = new Produtos_Editar();
         }
+        produto = alvo;
+        
         return self;
     }
 
@@ -62,6 +64,8 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
         nomeProdutoTbox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         custoProdutoSpinner = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+        quantidadeProdutoSpinner = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         dataProdutoDP = new org.jdesktop.swingx.JXDatePicker();
         jLabel4 = new javax.swing.JLabel();
@@ -69,21 +73,21 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         guardarProdutoBtn = new javax.swing.JButton();
         cancelarProdutoBtn = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        quantidadeProdutoSpinner = new javax.swing.JSpinner();
 
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(339, 263));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Produtos - Adicionar");
+        jLabel1.setText("Produtos - Editar");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nome:");
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Custo (R$):");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Quantidade:");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Data:");
@@ -109,17 +113,14 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
         });
         jPanel1.add(cancelarProdutoBtn, new java.awt.GridBagConstraints());
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Quantidade:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +133,7 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
                                 .addGap(0, 119, Short.MAX_VALUE))))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -140,7 +141,7 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(quantidadeProdutoSpinner)))
+                                .addComponent(quantidadeProdutoSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,27 +182,43 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void atualizarCampos(){
+        nomeProdutoTbox.setText(produto.getNomeProduto());
+        custoProdutoSpinner.setValue(produto.getPrecoProduto());
+        quantidadeProdutoSpinner.setValue(produto.getQuantidadeProduto());
+        dataProdutoDP.setDate(AgendaDAO.LocalDateTimeToDate(produto.getDataProduto()));
+        horaProdutoSpinner.setValue(AgendaDAO.LocalDateTimeToDate(produto.getDataProduto()));
+    }
+    
     private void guardarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProdutoBtn_onClick
-        
-        if (dataProdutoDP.getDate() != null){
-            if (horaProdutoSpinner.getValue() != null){
-                if (Double.valueOf(custoProdutoSpinner.getValue().toString()) >= 0){
-                    LocalDateTime ldt = LocalDateTime.ofInstant(dataProdutoDP.getDate().toInstant(), ZoneId.systemDefault());
-                    Date m = (Date) horaProdutoSpinner.getValue();
-                    LocalDateTime time = LocalDateTime.ofInstant(m.toInstant(), ZoneId.systemDefault());
-                    ldt = ldt.plusHours(time.getHour());
-                    ldt = ldt.plusMinutes(time.getMinute());
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    ldt.format(formatter);
-                    
-                    Produto produto = new Produto(nomeProdutoTbox.getText(), Double.valueOf(custoProdutoSpinner.getValue().toString()), Integer.valueOf(quantidadeProdutoSpinner.getValue().toString()), ldt);
-                    ProdutoDAO.Adicionar(produto);
-                    JOptionPane.showMessageDialog(null, "Relatório de compra de produto adicionado com sucesso!");
-                    this.setVisible(false);
+
+        if (!nomeProdutoTbox.getText().isEmpty()){
+            if (dataProdutoDP.getDate() != null){
+                if (horaProdutoSpinner.getValue() != null){
+                    if (Double.valueOf(custoProdutoSpinner.getValue().toString()) >= 0){
+                        LocalDateTime ldt = LocalDateTime.ofInstant(dataProdutoDP.getDate().toInstant(), ZoneId.systemDefault());
+                        Date m = (Date) horaProdutoSpinner.getValue();
+                        LocalDateTime time = LocalDateTime.ofInstant(m.toInstant(), ZoneId.systemDefault());
+                        ldt = ldt.plusHours(time.getHour());
+                        ldt = ldt.plusMinutes(time.getMinute());
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        ldt.format(formatter);
+
+                        produto.setNomeProduto(nomeProdutoTbox.getText());
+                        produto.setPrecoProduto(Double.valueOf(custoProdutoSpinner.getValue().toString()));
+                        produto.setQuantidadeProduto(Integer.valueOf(quantidadeProdutoSpinner.getValue().toString()));
+                        produto.setDataProduto(ldt);
+                        ProdutoDAO.Atualizar(produto);
+                        JOptionPane.showMessageDialog(null, "Relatório de compra de produto atualizado com sucesso!");
+                        this.setVisible(false);
+
+                        Produtos_Listar produtosListar = Produtos_Listar.getSelf();
+                        produtosListar.atualizarLista();
+                        produtosListar.setVisible(true);
+                    }
                 }
             }
         }
-
     }//GEN-LAST:event_guardarProdutoBtn_onClick
 
     private void cancelarProdutoBtn_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarProdutoBtn_onClick
@@ -225,20 +242,20 @@ public class Produtos_Adicionar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Produtos_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Produtos_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Produtos_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Produtos_Adicionar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos_Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Produtos_Adicionar().setVisible(true);
+                new Produtos_Editar().setVisible(true);
             }
         });
     }
