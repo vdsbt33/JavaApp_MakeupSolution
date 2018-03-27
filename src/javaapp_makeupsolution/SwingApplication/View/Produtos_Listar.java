@@ -54,6 +54,7 @@ public class Produtos_Listar extends javax.swing.JFrame {
         produtoTable = new javax.swing.JTable();
         editarProdutoBtn = new javax.swing.JButton();
         excluirProdutoBtn = new javax.swing.JButton();
+        custoTotalLabel = new javax.swing.JLabel();
 
         setAlwaysOnTop(true);
 
@@ -120,6 +121,8 @@ public class Produtos_Listar extends javax.swing.JFrame {
             }
         });
 
+        custoTotalLabel.setText("Custo total: 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +143,8 @@ public class Produtos_Listar extends javax.swing.JFrame {
                         .addComponent(atualizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(custoTotalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(editarProdutoBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(excluirProdutoBtn)))
@@ -163,7 +167,8 @@ public class Produtos_Listar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editarProdutoBtn)
-                    .addComponent(excluirProdutoBtn))
+                    .addComponent(excluirProdutoBtn)
+                    .addComponent(custoTotalLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -179,9 +184,11 @@ public class Produtos_Listar extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) produtoTable.getModel();
         model.setRowCount(0);
+        custoTotalLabel.setText("Custo total: 0");
 
         if (!produtos.isEmpty() && dataInicioDP.getDate() != null){
             if (dataFimDP.getDate() != null && dataInicioDP.getDate().before(dataFimDP.getDate())){
+                Double custoTotal = 0.0;
                 
                 Object[] columnsName = { "cod", "Nome", "Preço", "Quantidade", "Data Compra" };
                 model.setColumnIdentifiers(columnsName);
@@ -194,7 +201,10 @@ public class Produtos_Listar extends javax.swing.JFrame {
                     rowData[3] = produtos.get(i).getQuantidadeProduto();
                     rowData[4] = AgendaDAO.LocalDateTimeToString(produtos.get(i).getDataProduto());
                     model.addRow(rowData);
+                    
+                    custoTotal += produtos.get(i).getPrecoProduto();
                 }
+                custoTotalLabel.setText("Custo total: " + custoTotal);
             } else {
                 JOptionPane.showMessageDialog(null, "Verifique se as datas não foram inseridas invertidas.");
             }
@@ -278,6 +288,7 @@ public class Produtos_Listar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizarBtn;
+    private javax.swing.JLabel custoTotalLabel;
     private org.jdesktop.swingx.JXDatePicker dataFimDP;
     private org.jdesktop.swingx.JXDatePicker dataInicioDP;
     private javax.swing.JButton editarProdutoBtn;
