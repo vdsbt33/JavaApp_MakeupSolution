@@ -21,10 +21,10 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [X] Delete
 
 #### Produto
-- [ ] Create
-- [ ] Read
+- [X] Create
+- [X] Read
 - [ ] Update
-- [ ] Delete
+- [X] Delete
 
 ### Console Application
 #### Cliente
