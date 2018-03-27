@@ -7,6 +7,25 @@ Learning Java while helping my sister out.
 If you want to try it out, don't forget to create the database using the [.sql file](/mysql_query/mySqlSchema_MakeupSolution.sql).
 
 ## Progress
+### Android
+#### Cliente
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
+#### Agenda
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
+#### Produto
+- [ ] Create
+- [ ] Read
+- [ ] Update
+- [ ] Delete
+
 ### Swing
 #### Cliente
 - [X] Create
@@ -23,7 +42,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 #### Produto
 - [X] Create
 - [X] Read
-- [ ] Update
+- [X] Update
 - [X] Delete
 
 ### Console Application
