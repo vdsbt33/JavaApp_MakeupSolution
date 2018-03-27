@@ -26,7 +26,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [ ] Update
 - [ ] Delete
 
-### Swing
+### Swing - Finished Mar 27, 2018
 #### Cliente
 - [X] Create
 - [X] Read
@@ -45,7 +45,7 @@ If you want to try it out, don't forget to create the database using the [.sql f
 - [X] Update
 - [X] Delete
 
-### Console Application
+### Console Application - Finished Mar 18, 2018
 #### Cliente
 - [x] Create
 - [x] Read
