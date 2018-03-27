@@ -140,7 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.add(buscarProdutoBtn, new java.awt.GridBagConstraints());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Created by Vinícius de Souza in 2018 March. Uses SwingX, JCalendar and MySql Connector.");
+        jLabel5.setText("Criado por Vinícius de Souza em Março de 2018. Usa SwingX, JCalendar e MySql Connector.");
 
         jMenu1.setText("Atalhos");
 

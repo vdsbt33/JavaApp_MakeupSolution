@@ -321,7 +321,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Created by Vin&#xed;cius de Souza in 2018 March. Uses SwingX, JCalendar and MySql Connector."/>
+        <Property name="text" type="java.lang.String" value="Criado por Vin&#xed;cius de Souza em Mar&#xe7;o de 2018. Usa SwingX, JCalendar e MySql Connector."/>
       </Properties>
     </Component>
   </SubComponents>
