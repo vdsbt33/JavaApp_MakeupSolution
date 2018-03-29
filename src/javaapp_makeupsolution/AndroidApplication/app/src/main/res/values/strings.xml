@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Makeup Solution Mobile</string>
+    <string name="title_activity_main">Makeup Solution Mobile</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Makeup Solution</string>
+    <string name="nav_header_subtitle">Criado por Vinícius de Souza</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_clientes_adicionar">Clientes - Adicionar</string>
+    <string name="title_activity_clientes_buscar">Clientes - Buscar</string>
+    <string name="menu_buscar">Buscar</string>
+    <string name="menu_editar">Editar</string>
+    <string name="menu_remover">Remover</string>
+</resources>

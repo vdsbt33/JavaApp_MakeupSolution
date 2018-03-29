@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Clientes">
+            <menu>
+                <item android:checkable="true"
+                    android:id="@+id/nav_clientes_adicionar"
+                    android:icon="@drawable/ic_adicionar"
+                    android:title="Adicionar" />
+                <item android:checkable="true"
+                    android:id="@+id/nav_clientes_buscar"
+                    android:icon="@drawable/ic_listar"
+                    android:title="Buscar" />
+            </menu>
+        </item>
+
+        <item android:title="Agenda">
+            <menu>
+                <item android:checkable="true"
+                    android:id="@+id/nav_agenda_adicionar"
+                    android:icon="@drawable/ic_adicionar"
+                    android:title="Adicionar" />
+                <item android:checkable="true"
+                    android:id="@+id/nav_agenda_buscar"
+                    android:icon="@drawable/ic_listar"
+                    android:title="Buscar" />
+            </menu>
+
+            <item android:title="Produto">
+                <menu>
+                    <item android:checkable="true"
+                        android:id="@+id/nav_produto_adicionar"
+                        android:icon="@drawable/ic_adicionar"
+                        android:title="Adicionar" />
+                    <item android:checkable="true"
+                        android:id="@+id/nav_produto_buscar"
+                        android:icon="@drawable/ic_listar"
+                        android:title="Buscar" />
+                </menu>
+            </item>
+        </item>
+    </group>
+
+
+</menu>
