@@ -10,9 +10,9 @@ If you want to try it out, don't forget to create the database using the [.sql f
 ### Android
 #### Cliente
 - [X] Create
-- [ ] Read
+- [X] Read
 - [ ] Update
-- [ ] Delete
+- [X] Delete
 
 #### Agenda
 - [ ] Create
