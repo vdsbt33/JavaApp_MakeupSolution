@@ -1,0 +1,152 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+MERGED from [com.android.support:design:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/46bbf0b4f46770517134c4c2262cde42/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/8f2884bd11ad16463e14ede8038b5355/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/f2b4a90589fb2dc4d75f7dbab6a4ea37/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/a7a558eb800700ca4af003621355c33a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/5d0abd58f7e62f07906d27a1f4e2c53a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/a1ff76f6657be5a57117d76f55a9d4c8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/afdf13b364b4b13dbd1e454a51e53dcf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/19c03bcad1c5e7ff4d352b304fc2e5c5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/fcc07a569ec635a3229752e2069e4b81/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/35f6859538921e0468b184e70c0686f1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ad4795eaf200496116b35b9746e69822/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f9b45cee52b2bd3c6de7bc7759ea27d8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc231ea9ed35a1abfc8bcd71deb76b83/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/de0da6e4b9f859e41e3658a1cc764765/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+	package
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:3:5-56
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:1-43:12
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:5:5-41:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/46bbf0b4f46770517134c4c2262cde42/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/46bbf0b4f46770517134c4c2262cde42/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:7:9-49
+	android:allowBackup
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:11:9-40
+activity#vdsbt33.makeupsolution_androidapplication.View.MainActivity
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:14:13-56
+	android:theme
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:13:13-46
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:19:27-74
+activity#vdsbt33.makeupsolution_androidapplication.View.ClientesAdicionar
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:22:9-30:20
+	android:parentActivityName
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:25:13-60
+	android:label
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:24:13-70
+	android:theme
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:23:13-51
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:27:13-29:95
+	android:value
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:29:17-92
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:28:17-63
+activity#vdsbt33.makeupsolution_androidapplication.View.ClientesBuscar
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:31:9-39:20
+	android:parentActivityName
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:34:13-60
+	android:label
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:33:13-67
+	android:theme
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:35:13-56
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:32:13-48
+activity#vdsbt33.makeupsolution_androidapplication.View.ClientesEditar
+ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:40:9-57
+	android:name
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml:40:19-54
+uses-sdk
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/46bbf0b4f46770517134c4c2262cde42/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/46bbf0b4f46770517134c4c2262cde42/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/8f2884bd11ad16463e14ede8038b5355/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.0.aar/8f2884bd11ad16463e14ede8038b5355/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/f2b4a90589fb2dc4d75f7dbab6a4ea37/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/f2b4a90589fb2dc4d75f7dbab6a4ea37/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/a7a558eb800700ca4af003621355c33a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/a7a558eb800700ca4af003621355c33a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/5d0abd58f7e62f07906d27a1f4e2c53a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/5d0abd58f7e62f07906d27a1f4e2c53a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/a1ff76f6657be5a57117d76f55a9d4c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.0.aar/a1ff76f6657be5a57117d76f55a9d4c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/afdf13b364b4b13dbd1e454a51e53dcf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/afdf13b364b4b13dbd1e454a51e53dcf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/19c03bcad1c5e7ff4d352b304fc2e5c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/19c03bcad1c5e7ff4d352b304fc2e5c5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/fcc07a569ec635a3229752e2069e4b81/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/fcc07a569ec635a3229752e2069e4b81/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/35f6859538921e0468b184e70c0686f1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/transition-27.1.0.aar/35f6859538921e0468b184e70c0686f1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ad4795eaf200496116b35b9746e69822/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ad4795eaf200496116b35b9746e69822/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f9b45cee52b2bd3c6de7bc7759ea27d8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f9b45cee52b2bd3c6de7bc7759ea27d8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc231ea9ed35a1abfc8bcd71deb76b83/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc231ea9ed35a1abfc8bcd71deb76b83/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/de0da6e4b9f859e41e3658a1cc764765/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/vdsbt33/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/de0da6e4b9f859e41e3658a1cc764765/AndroidManifest.xml:20:5-44
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		ADDED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/AndroidManifest.xml

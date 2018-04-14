@@ -12,4 +12,9 @@
     <string name="menu_buscar">Buscar</string>
     <string name="menu_editar">Editar</string>
     <string name="menu_remover">Remover</string>
+    <string name="cliente_adicionar_error_nome">Você deve inserir um nome para o cliente.</string>
+    <string name="cliente_adicionar_error_contato">Todos os meios de contatos devem ter o valor preenchido.</string>
+    <string name="cliente_adicionar_error_endereco">Todos os dados de endereço devem ser preenchidos.</string>
+    <string name="cliente_adicionar_error_database">O acesso ao banco de dados não foi possível.</string>
+    <string name="cliente_adicionar_success">Cliente adicionado com sucesso!</string>
 </resources>

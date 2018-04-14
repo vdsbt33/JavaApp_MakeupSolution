@@ -6,15 +6,33 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="ToolbarWhite" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/titleForeground</item>
+        <item name="android:textColorSecondary">@color/titleForeground</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppCompatWhite" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/titleForeground</item>
+        <item name="android:textColorSecondary">@color/titleForeground</item>
+        <item name="colorPrimary">@color/titleForeground</item>
+
+    </style>
+
+
+
+    <style name="AppTheme.AppBarOverlay" />
+    <style name="AppTheme.PopupOverlay" />
 
 </resources>

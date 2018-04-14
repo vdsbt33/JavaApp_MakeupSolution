@@ -70,5 +70,10 @@ public class Endereco {
         this.ruaEndereco = ruaEndereco;
         this.numeroEndereco = numeroEndereco;
     }
+
+    @Override
+    public String toString(){
+        return String.format(getCidadeEndereco().getNomeCidadeEndereco() + ", " + getBairroEndereco().getNomeBairroEndereco() + ", " + getRuaEndereco().getNomeRuaEndereco() + ", " + numeroEndereco);
+    }
     
 }

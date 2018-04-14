@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4sp">
+
+
+    <TextView
+        android:id="@+id/nomeClienteLbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="6sp"
+        android:textStyle="normal|bold"
+        android:text="Nome do Cliente"
+        />
+
+
+
+    <LinearLayout
+        android:id="@+id/selectedContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/nomeClienteLbl"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/descricaoClienteLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Descrição do Cliente"/>
+
+        <TextView
+            android:id="@+id/enderecoLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Endereço do Cliente" />
+
+        <ListView
+            android:id="@+id/contatoList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            android:clickable="false"
+            android:visibility="visible">
+        </ListView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left">
+
+            <Button
+                android:id="@+id/modificarBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modificar"
+                android:textSize="12sp"
+                android:minWidth="14sp"
+                android:maxHeight="8sp" />
+
+            <Button
+                android:id="@+id/excluirBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Excluir"
+                android:layout_toRightOf="@+id/modificarBtn"
+                android:textSize="12sp"
+                android:minWidth="10sp"
+                android:maxHeight="8sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -11,7 +11,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,6 +45,40 @@
         <CheckBox
             android:layout_marginTop="16sp"
             android:layout_marginBottom="16sp"
+            android:text="Adicionar Contato"
+            android:id="@+id/cboxContato" />
+
+        <LinearLayout
+            android:id="@+id/containerContato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/contatoListAdicionar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                tools:listitem="@layout/cliente_contato_component">
+
+            </ListView>
+
+            <Button
+                android:id="@+id/novoContatoBtnAdicionar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Adicionar outro"
+                />
+        </LinearLayout>
+
+
+        <CheckBox
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="16sp"
             android:text="Adicionar Endereço"
             android:id="@+id/cboxEndereco" />
 
@@ -52,7 +86,9 @@
             android:id="@+id/containerEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="24sp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -112,6 +148,8 @@
 
         </LinearLayout>
 
+        <TextView
+            android:paddingBottom="28sp"/>
 
     </TableLayout>
 </ScrollView>

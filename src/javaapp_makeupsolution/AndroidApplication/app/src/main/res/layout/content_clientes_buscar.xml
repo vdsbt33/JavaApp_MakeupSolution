@@ -12,7 +12,11 @@
     <ListView
         android:id="@+id/clientesTable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:clickable="true" />
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false"
+        tools:listitem="@layout/cliente_buscar_component"
+        />
+
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return String.format(getCod() + ". " + getNome() + " - " + getDescricao());
+        return String.format(getNome());
     }
 
 }
