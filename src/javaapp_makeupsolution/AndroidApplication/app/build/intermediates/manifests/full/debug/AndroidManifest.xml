@@ -31,7 +31,8 @@
             android:name="vdsbt33.makeupsolution_androidapplication.View.ClientesAdicionar"
             android:label="@string/title_activity_clientes_adicionar"
             android:parentActivityName="vdsbt33.makeupsolution_androidapplication.View.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="vdsbt33.makeupsolution_androidapplication.View.MainActivity" />
@@ -45,7 +46,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="vdsbt33.makeupsolution_androidapplication.View.MainActivity" />
         </activity>
-        <activity android:name="vdsbt33.makeupsolution_androidapplication.View.ClientesEditar" />
+        <activity
+            android:name="vdsbt33.makeupsolution_androidapplication.View.ClientesEditar"
+            android:label="@string/title_activity_clientes_modificar"
+            android:parentActivityName="vdsbt33.makeupsolution_androidapplication.View.ClientesBuscar"
+            android:theme="@style/AppTheme.AppBarOverlay" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vdsbt33.makeupsolution_androidapplication.View.ClientesBuscar" />
+        </activity>
     </application>
 
 </manifest>

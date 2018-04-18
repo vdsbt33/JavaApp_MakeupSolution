@@ -3,6 +3,7 @@ package vdsbt33.makeupsolution_androidapplication.Lib;
 import java.util.ArrayList;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import vdsbt33.makeupsolution_androidapplication.Model.Cliente;
 import vdsbt33.makeupsolution_androidapplication.Model.Contato;
 import vdsbt33.makeupsolution_androidapplication.R;
 import vdsbt33.makeupsolution_androidapplication.View.ClientesAdicionar;
+import vdsbt33.makeupsolution_androidapplication.View.ClientesEditar;
 
 public class Clientes_Buscar_Component_Adapter extends ArrayAdapter<Clientes_Buscar_Component> implements View.OnClickListener {
 

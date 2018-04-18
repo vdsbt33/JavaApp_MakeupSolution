@@ -152,9 +152,16 @@ public class ClientesBuscar extends MainActivity implements View.OnClickListener
         if (view == findViewById(R.id.fab)) {
             getLista();
         }
-
+        android.util.Log.i("vdebug", "Clicked View: " + view.toString());
     }
 
+    public static Cliente clienteEditar;
+
+    public void openEditarCliente(Cliente cliente){
+        Intent clientesEditar = new Intent(getBaseContext(), ClientesEditar.class);
+        startActivity(clientesEditar);
+        clienteEditar = cliente;
+    }
 
     private View lastView = null;
     @Override
@@ -177,6 +184,11 @@ public class ClientesBuscar extends MainActivity implements View.OnClickListener
 
             adapter.setSelectedView(position);
         }
+    }
+
+    //
+    public void startEditarActivity(Clientes_Buscar_Component cliente) {
+        
     }
 
 

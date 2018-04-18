@@ -1,4 +1,7 @@
-#Sat Apr 14 01:37:04 BRT 2018
-base.0=/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/transforms/dexMerger/debug/15
+#Mon Apr 16 14:07:54 BRT 2018
+base.0=/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/transforms/dexMerger/debug/28
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/transforms/dexMerger/debug/27

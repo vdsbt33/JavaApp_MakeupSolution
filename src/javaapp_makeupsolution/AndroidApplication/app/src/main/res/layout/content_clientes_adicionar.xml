@@ -7,7 +7,9 @@
     android:layout_margin="12sp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".View.ClientesAdicionar"
-    tools:showIn="@layout/activity_clientes_adicionar">
+    tools:showIn="@layout/activity_clientes_adicionar"
+    android:isScrollContainer="true"
+    android:id="@+id/scrollViewClientesAdicionar">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -60,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 tools:listitem="@layout/cliente_contato_component">
 
             </ListView>

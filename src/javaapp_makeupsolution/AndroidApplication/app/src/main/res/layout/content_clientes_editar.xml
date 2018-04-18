@@ -56,7 +56,7 @@
             android:visibility="gone">
 
             <ListView
-                android:id="@+id/contatoListAdicionar"
+                android:id="@+id/contatoListEditar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -67,7 +67,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/novoContatoBtnAdicionar"
+                android:id="@+id/novoContatoBtnEditar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

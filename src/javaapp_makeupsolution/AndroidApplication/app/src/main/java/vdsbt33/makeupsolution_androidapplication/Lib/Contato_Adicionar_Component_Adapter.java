@@ -12,22 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import vdsbt33.makeupsolution_androidapplication.Controller.ContatoDAO;
 import vdsbt33.makeupsolution_androidapplication.Model.Contato;
 import vdsbt33.makeupsolution_androidapplication.R;
 
 public class Contato_Adicionar_Component_Adapter extends ArrayAdapter<Contato> implements View.OnClickListener, AdapterView.OnItemClickListener, TextWatcher, View.OnFocusChangeListener {
 
     private final Context context;
-    private final ArrayList<Contato> itemList;
+    private final List<Contato> itemList;
 
-    public Contato_Adicionar_Component_Adapter(Context context, ArrayList<Contato> itemList) {
+    public Contato_Adicionar_Component_Adapter(Context context, List<Contato> itemList) {
         super(context, R.layout.cliente_contato_component, itemList);
 
         this.context = context;

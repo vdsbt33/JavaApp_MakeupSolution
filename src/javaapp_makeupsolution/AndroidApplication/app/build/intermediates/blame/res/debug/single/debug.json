@@ -16,40 +16,40 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_light.png"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_design_ic_visibility_off.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/res/drawable-hdpi-v4/design_ic_visibility_off.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_light.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/tooltip_frame_light.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/res/layout-v21/notification_template_custom_big.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/res/layout-v21/notification_template_custom_big.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_abc_activity_chooser_view_list_item.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/layout/abc_activity_chooser_view_list_item.xml"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_abc_activity_chooser_view_list_item.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -104,24 +104,24 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_longpressed_holo.9.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_longpressed_holo.9.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -136,12 +136,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_ic_home_black_24dp.xml.flat",
-        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/drawable/ic_home_black_24dp.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_text_select_handle_middle_mtrl_dark.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_ic_home_black_24dp.xml.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/drawable/ic_home_black_24dp.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
@@ -164,24 +164,24 @@
         "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/layout/cliente_buscar_component.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_ic_go_search_api_material.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/anim_abc_fade_in.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/anim/abc_fade_in.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_light.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color/abc_primary_text_material_light.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_design_ic_visibility.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/res/drawable-hdpi-v4/design_ic_visibility.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_light.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color/abc_primary_text_material_light.xml"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -216,12 +216,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color_abc_secondary_text_material_dark.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_spinner_textfield_background_material.xml.flat",
@@ -264,28 +264,28 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_list_longpressed_holo.9.png"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/anim_design_snackbar_out.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/res/anim/design_snackbar_out.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_select_dialog_multichoice_material.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/layout/select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/anim_design_snackbar_out.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/res/anim/design_snackbar_out.xml"
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_light.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_item_background_holo_light.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_activity_clientes_buscar_drawer.xml.flat",
         "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/layout/activity_clientes_buscar_drawer.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_light.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_item_background_holo_light.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -340,12 +340,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
@@ -448,6 +448,10 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/res/drawable/notification_bg.xml"
     },
     {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_save.png.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-xhdpi/ic_save.png"
+    },
+    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color_design_error.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/82090d295e5d44da5daf263be4975fa3/res/color/design_error.xml"
     },
@@ -464,12 +468,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_list_selector_background_transition_holo_light.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
@@ -480,12 +484,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color-v21_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color-v21/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color-v21_abc_btn_colored_borderless_text_material.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/color-v21/abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_abc_expanded_menu_layout.xml.flat",
@@ -556,12 +560,12 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/fcc07a569ec635a3229752e2069e4b81/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/anim_abc_fade_out.xml.flat",
-        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/anim/abc_fade_out.xml"
-    },
-    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/47c17c6f9d9f3a29336ac40cc238c3b2/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/anim_abc_fade_out.xml.flat",
+        "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/anim/abc_fade_out.xml"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_design_ic_visibility_off.png.flat",
@@ -782,6 +786,10 @@
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_save.png.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-hdpi/ic_save.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_design_ic_visibility_off.xml.flat",
@@ -1008,6 +1016,10 @@
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.0.aar/fcc07a569ec635a3229752e2069e4b81/res/layout/notification_template_media_custom.xml"
     },
     {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_activity_clientes_editar.xml.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/layout/activity_clientes_editar.xml"
+    },
+    {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-hdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
@@ -1082,6 +1094,10 @@
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_save.png.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-mdpi/ic_save.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -1862,6 +1878,10 @@
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/layout_abc_action_mode_bar.xml.flat",
         "source": "/home/vdsbt33/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5e3ca5bf02979be623a48eb78642efb6/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_save.png.flat",
+        "source": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/src/main/res/mipmap-xxhdpi/ic_save.png"
     },
     {
         "merged": "/home/vdsbt33/AndroidStudioProjects/MakeupSolution_AndroidApplication/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_light.xml.flat",

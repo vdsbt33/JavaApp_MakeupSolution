@@ -9,6 +9,7 @@
     <string name="action_settings">Configurações</string>
     <string name="title_activity_clientes_adicionar">Clientes - Adicionar</string>
     <string name="title_activity_clientes_buscar">Clientes - Buscar</string>
+    <string name="title_activity_clientes_modificar">Clientes - Modificar</string>
     <string name="menu_buscar">Buscar</string>
     <string name="menu_editar">Editar</string>
     <string name="menu_remover">Remover</string>
